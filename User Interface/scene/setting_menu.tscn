@@ -1,0 +1,842 @@
+[gd_scene load_steps=19 format=3 uid="uid://bcnrrcnj2hs5d"]
+
+[ext_resource type="Theme" uid="uid://duqh8hbo60utg" path="res://User Interface/GUI Theme/option_menu.tres" id="1_awp53"]
+[ext_resource type="Script" path="res://User Interface/script/turn_page.gd" id="2_4t6ib"]
+[ext_resource type="Script" path="res://User Interface/script/setting_menu.gd" id="2_5ntlk"]
+[ext_resource type="Script" path="res://User Interface/script/language_chaunging.gd" id="3_2xscg"]
+[ext_resource type="Script" path="res://addons/custom_nodes/nodes/bind_button.gd" id="4_5j5og"]
+[ext_resource type="Texture2D" uid="uid://cmrsto4n85bge" path="res://User Interface/asset/reset.svg" id="5_t2iny"]
+[ext_resource type="Script" path="res://User Interface/script/reset.gd" id="6_4a43j"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_dx7lw"]
+device = -1
+keycode = 87
+physical_keycode = 87
+key_label = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_5sye6"]
+device = -1
+keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_hjqmw"]
+device = -1
+keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_eljvb"]
+device = -1
+keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_yx8qe"]
+button_index = 1
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_15v84"]
+button_index = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_ew1lh"]
+device = -1
+keycode = 49
+unicode = 49
+
+[sub_resource type="InputEventKey" id="InputEventKey_61bp1"]
+device = -1
+keycode = 50
+unicode = 50
+
+[sub_resource type="InputEventKey" id="InputEventKey_ybtu6"]
+device = -1
+keycode = 51
+unicode = 51
+
+[sub_resource type="InputEventKey" id="InputEventKey_xr2bq"]
+device = -1
+keycode = 70
+unicode = 102
+
+[sub_resource type="InputEventKey" id="InputEventKey_uv7b1"]
+device = -1
+keycode = 4194306
+
+[node name="SettingMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+script = ExtResource("2_5ntlk")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/separation = 300
+split_offset = 1000
+collapsed = true
+
+[node name="Panel" type="Panel" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme = ExtResource("1_awp53")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+alignment = 1
+
+[node name="Game" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Game"
+script = ExtResource("2_4t6ib")
+
+[node name="Display" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Display"
+script = ExtResource("2_4t6ib")
+page = 1
+
+[node name="Voice" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Voice"
+script = ExtResource("2_4t6ib")
+page = 2
+
+[node name="Control" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Control"
+script = ExtResource("2_4t6ib")
+page = 3
+
+[node name="Language" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Language"
+script = ExtResource("2_4t6ib")
+page = 4
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Back" type="Button" parent="HSplitContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+text = "Back"
+
+[node name="Panel2" type="Panel" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.0
+theme = ExtResource("1_awp53")
+
+[node name="TabContainer" type="TabContainer" parent="HSplitContainer/Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+current_tab = 3
+tabs_visible = false
+
+[node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Tital" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_font_sizes/font_size = 50
+text = "游戏设置（TODO）"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "条目2"
+
+[node name="OptionButton" type="OptionButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "条目2"
+
+[node name="CheckButton" type="CheckButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "条目2"
+
+[node name="CheckButton" type="CheckButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+
+[node name="DisplaySettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Tital" type="Label" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_font_sizes/font_size = 50
+text = "Display Setting"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="VoiceSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Tital" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_font_sizes/font_size = 50
+text = "Voice Setting"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="ControlSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Tital" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_font_sizes/font_size = 50
+text = "Control Setting"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="Move_up" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_up"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "move_up"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_up"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "move_up"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_up/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_dx7lw")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_up/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Move_down" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_down"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "move_down"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_down"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "move_down"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_down/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_5sye6")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_down/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Move_left" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_left"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "move_left"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_left"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "move_left"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_left/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_hjqmw")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_left/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Move_right" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_right"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "moce_right"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_right"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "move_right"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_right/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_eljvb")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_right/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Attack" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Attack"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "attack"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Attack"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "attack"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Attack/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventMouseButton_yx8qe")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Attack/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Spurt" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Spurt"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "spurt"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Spurt"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "spurt"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Spurt/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventMouseButton_15v84")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Spurt/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Shortcut_bar1" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "shortcut bar 1"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "shortcut bar 1"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar1/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_ew1lh")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar1/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Shortcut_bar2" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "shortcut bar 2"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "shortcut bar 2"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar2/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_61bp1")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar2/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Shortcut_bar3" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "shortcut bar 3"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "shortcut bar 3"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar3/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_ybtu6")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Shortcut_bar3/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Interact" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "interact"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Interact"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "interact"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Interact/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_xr2bq")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Interact/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Bag" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Bag"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "bag"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Bag"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "bag"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Bag/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_t2iny")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_uv7b1")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Bag/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="LanguageSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/LanguageSettingPage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_awp53")
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/Panel2/TabContainer/LanguageSettingPage/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+script = ExtResource("3_2xscg")
+
+[node name="Tital" type="Label" parent="HSplitContainer/Panel2/TabContainer/LanguageSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+theme_override_font_sizes/font_size = 50
+text = "Language Setting"
+
+[node name="HSeparator" type="HSeparator" parent="HSplitContainer/Panel2/TabContainer/LanguageSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+
+[node name="GridContainer" type="GridContainer" parent="HSplitContainer/Panel2/TabContainer/LanguageSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_awp53")
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
+
+[connection signal="pressed" from="HSplitContainer/Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]

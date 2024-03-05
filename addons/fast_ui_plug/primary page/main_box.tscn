@@ -1,0 +1,518 @@
+[gd_scene format=3 uid="uid://ikjgg7lrpooj"]
+
+[node name="main_box" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="gaming" type="ScrollContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="gaming"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="gaming/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="gaming/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "基本设置"
+
+[node name="Line1" type="HSplitContainer" parent="gaming/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="gaming/MarginContainer/VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "鼠标灵敏度"
+
+[node name="HSlider" type="HSlider" parent="gaming/MarginContainer/VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 3
+tick_count = 7
+
+[node name="Line2" type="HSplitContainer" parent="gaming/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="gaming/MarginContainer/VBoxContainer/Line2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "*视角灵敏度"
+
+[node name="HSlider" type="HSlider" parent="gaming/MarginContainer/VBoxContainer/Line2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="display" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="display"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="display/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "图像设置"
+
+[node name="Line1" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "图像质量"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line2" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "显示模式"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line3" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "亮度（伽马值）"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line4" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "帧率"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line5" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "垂直同步"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line6" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line6"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "抗锯齿"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line7" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line7"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "*体积雾"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line7"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line8" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line8"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "*后期精度"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line8"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line9" type="HSplitContainer" parent="display/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="display/MarginContainer/VBoxContainer/Line9"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "*场景细节"
+
+[node name="HSlider" type="HSlider" parent="display/MarginContainer/VBoxContainer/Line9"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="voice" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="voice"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="voice/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="voice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "声音设置"
+
+[node name="Line1" type="HSplitContainer" parent="voice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="voice/MarginContainer/VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "总音量"
+
+[node name="HSlider" type="HSlider" parent="voice/MarginContainer/VBoxContainer/Line1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line2" type="HSplitContainer" parent="voice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="voice/MarginContainer/VBoxContainer/Line2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "BGM"
+
+[node name="HSlider" type="HSlider" parent="voice/MarginContainer/VBoxContainer/Line2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line3" type="HSplitContainer" parent="voice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="voice/MarginContainer/VBoxContainer/Line3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "音效"
+
+[node name="HSlider" type="HSlider" parent="voice/MarginContainer/VBoxContainer/Line3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="Line4" type="HSplitContainer" parent="voice/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="voice/MarginContainer/VBoxContainer/Line4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "*语音音量"
+
+[node name="HSlider" type="HSlider" parent="voice/MarginContainer/VBoxContainer/Line4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+tick_count = 7
+
+[node name="control" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="control"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "按键设置"
+
+[node name="Line1" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action1"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line1"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line2" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action2"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line2"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line3" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action3"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line3"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line4" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line4"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action4"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line4"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line5" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line5"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action5"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line5"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line6" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line6"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action6"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line6"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line7" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line7"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action7"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line7"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line8" type="HSplitContainer" parent="control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="control/MarginContainer/VBoxContainer/Line8"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Action8"
+
+[node name="HSlider" type="Button" parent="control/MarginContainer/VBoxContainer/Line8"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="language" type="ScrollContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="language"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="language/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="language/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 30
+text = "语言设置"
+
+[node name="GridContainer" type="GridContainer" parent="language/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="Button1" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种1"
+
+[node name="Button2" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种2"
+
+[node name="Button3" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种3"
+
+[node name="Button4" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种4"
+
+[node name="Button5" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种5"
+
+[node name="Button6" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种6"
+
+[node name="Button7" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种7"
+
+[node name="Button8" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种8"
+
+[node name="Button9" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种9"
+
+[node name="Button10" type="Button" parent="language/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "语种10"

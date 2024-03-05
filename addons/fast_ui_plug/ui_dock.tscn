@@ -1,0 +1,231 @@
+[gd_scene load_steps=11 format=3 uid="uid://bv83rkwvo5rxt"]
+
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/insert_button.gd" id="1_rch0c"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/new_scene_button.gd" id="2_lvbpr"]
+[ext_resource type="Theme" uid="uid://btasvfgvfgoc2" path="res://addons/fast_ui_plug/Theme/buttom_line.tres" id="3_etxv8"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Vbox.gd" id="4_0m5fm"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Line1.gd" id="4_6ga02"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Scroll_box.gd" id="4_clts0"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Margin_box.gd" id="4_h54r6"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Line2.gd" id="5_d47m7"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Line3.gd" id="6_4smol"]
+[ext_resource type="Script" path="res://addons/fast_ui_plug/primary page/Line4.gd" id="7_8ef8v"]
+
+[node name="UI布局模块" type="TabContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="主菜单" type="Control" parent="."]
+layout_mode = 2
+
+[node name="VScrollBar" type="ScrollContainer" parent="主菜单"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="主菜单/VScrollBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="主菜单/VScrollBar/VBoxContainer"]
+layout_mode = 2
+collapsed = true
+
+[node name="Label" type="Label" parent="主菜单/VScrollBar/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "主体"
+
+[node name="HSplitContainer" type="HSplitContainer" parent="主菜单/VScrollBar/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Button" type="Button" parent="主菜单/VScrollBar/VBoxContainer/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "└插入选中项目（不推荐）"
+script = ExtResource("1_rch0c")
+
+[node name="Button2" type="Button" parent="主菜单/VScrollBar/VBoxContainer/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "打开场景↗"
+script = ExtResource("2_lvbpr")
+
+[node name="Button" type="Button" parent="主菜单/VScrollBar/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_etxv8")
+alignment = 0
+script = ExtResource("4_clts0")
+
+[node name="Button" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.0738832
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 0
+script = ExtResource("4_h54r6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.09375
+anchor_top = 0.0738832
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 0
+script = ExtResource("4_0m5fm")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0602457
+anchor_top = 0.0981616
+anchor_right = 0.999868
+anchor_bottom = 0.999645
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+theme_override_constants/separation = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer"]
+layout_mode = 2
+text = "条目1"
+alignment = 0
+script = ExtResource("4_6ga02")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="HSlider" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer/Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330709
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.84
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+value = 50.0
+editable = false
+scrollable = false
+tick_count = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer"]
+layout_mode = 2
+text = "条目2"
+alignment = 0
+script = ExtResource("5_d47m7")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="OptionButton" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer/Button2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330709
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.84
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+disabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Button3" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer"]
+layout_mode = 2
+text = "条目3"
+alignment = 0
+script = ExtResource("6_4smol")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="CheckButton" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer/Button3"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330709
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.84
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+disabled = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Button4" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_etxv8")
+text = "条目4"
+alignment = 0
+script = ExtResource("7_8ef8v")
+metadata/_edit_use_anchors_ = true
+
+[node name="HSlider" type="TabBar" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer/Button4"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.330709
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 0.84
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+theme_override_font_sizes/font_size = 10
+tab_count = 3
+tab_alignment = 1
+tab_0/title = "流畅"
+tab_1/title = "均衡"
+tab_2/title = "高清"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button5" type="Button" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button/VBoxContainer"]
+layout_mode = 2
+text = "条目5（待添加）"
+alignment = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="主菜单/VScrollBar/VBoxContainer/Button/Button/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Vbox"
+
+[node name="Label" type="Label" parent="主菜单/VScrollBar/VBoxContainer/Button/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "margin框"
+
+[node name="Label" type="Label" parent="主菜单/VScrollBar/VBoxContainer/Button"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "纵向卷轴框"
+
+[node name="游戏内" type="Control" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="Button" type="Button" parent="游戏内"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "cilck me"

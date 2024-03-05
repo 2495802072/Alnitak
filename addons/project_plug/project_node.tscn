@@ -1,0 +1,149 @@
+[gd_scene load_steps=6 format=3 uid="uid://dj43sadd24gpm"]
+
+[ext_resource type="Script" path="res://addons/project_plug/Line1.gd" id="1_qawyt"]
+[ext_resource type="Script" path="res://addons/project_plug/Line2.gd" id="2_wrpuw"]
+[ext_resource type="Script" path="res://addons/project_plug/Line3.gd" id="3_0m1tg"]
+[ext_resource type="Script" path="res://addons/project_plug/Line4.gd" id="4_5u7sj"]
+[ext_resource type="Script" path="res://addons/project_plug/Line5.gd" id="5_fy84x"]
+
+[node name="Project 模块" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -772.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "项目常用首要设置"
+horizontal_alignment = 1
+
+[node name="Line1" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+script = ExtResource("1_qawyt")
+
+[node name="Label" type="Label" parent="VBoxContainer/Line1"]
+layout_mode = 2
+text = "分辨率："
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Line1"]
+layout_mode = 2
+size_flags_horizontal = 8
+dragger_visibility = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/Line1/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Line1/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+text = "x:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Line1/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+text = "1152"
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/Line1/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+dragger_visibility = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/Line1/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+text = "y:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Line1/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+text = "648"
+
+[node name="Line2" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+script = ExtResource("2_wrpuw")
+
+[node name="Label" type="Label" parent="VBoxContainer/Line2"]
+layout_mode = 2
+text = "拉伸模式："
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Line2"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+item_count = 3
+selected = 2
+popup/item_0/text = "不拉伸(非游戏适合)"
+popup/item_0/id = 0
+popup/item_1/text = "直接缩放(游戏推荐)"
+popup/item_1/id = 1
+popup/item_2/text = "等比渲染(像素游戏推荐)"
+popup/item_2/id = 2
+
+[node name="Line3" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+script = ExtResource("3_0m1tg")
+
+[node name="Label" type="Label" parent="VBoxContainer/Line3"]
+layout_mode = 2
+text = "拉伸比例："
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Line3"]
+layout_mode = 2
+size_flags_horizontal = 8
+alignment = 1
+item_count = 5
+selected = 0
+popup/item_0/text = "完全填充(不保持长宽比)"
+popup/item_0/id = 0
+popup/item_1/text = "固定长宽"
+popup/item_1/id = 1
+popup/item_2/text = "仅定宽(高度不变，保持长宽比)"
+popup/item_2/id = 2
+popup/item_3/text = "仅定高(宽度不变，保持长宽比)"
+popup/item_3/id = 3
+popup/item_4/text = "保持长宽比"
+popup/item_4/id = 4
+
+[node name="Line4" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+script = ExtResource("4_5u7sj")
+
+[node name="Label" type="Label" parent="VBoxContainer/Line4"]
+layout_mode = 2
+text = "自定义数据目录："
+
+[node name="CheckBox" type="CheckButton" parent="VBoxContainer/Line4"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Line5" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+dragger_visibility = 2
+script = ExtResource("5_fy84x")
+
+[node name="Label" type="Label" parent="VBoxContainer/Line5"]
+layout_mode = 2
+text = "数据目录名称："
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Line5"]
+layout_mode = 2
+
+[connection signal="focus_exited" from="VBoxContainer/Line1/HSplitContainer/HSplitContainer/LineEdit" to="VBoxContainer/Line1" method="changed"]
+[connection signal="focus_exited" from="VBoxContainer/Line1/HSplitContainer/HSplitContainer2/LineEdit" to="VBoxContainer/Line1" method="changed"]
+[connection signal="item_selected" from="VBoxContainer/Line2/OptionButton" to="VBoxContainer/Line2" method="selected"]
+[connection signal="item_selected" from="VBoxContainer/Line3/OptionButton" to="VBoxContainer/Line3" method="selected"]
+[connection signal="toggled" from="VBoxContainer/Line4/CheckBox" to="VBoxContainer/Line4" method="changed"]
+[connection signal="text_submitted" from="VBoxContainer/Line5/LineEdit" to="VBoxContainer/Line5" method="changed_name"]

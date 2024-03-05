@@ -1,0 +1,53 @@
+[gd_scene load_steps=3 format=3 uid="uid://wc0cmav6dnfr"]
+
+[ext_resource type="Theme" uid="uid://brxm4wxxkg4rm" path="res://User Interface/GUI Theme/primary_menu.tres" id="1_3pt7l"]
+[ext_resource type="Script" path="res://User Interface/script/primary_menu.gd" id="1_kirpg"]
+
+[node name="PrimaryMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kirpg")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Tital" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_3pt7l")
+text = "Alnitak:Broken World"
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3pt7l")
+text = "Play"
+
+[node name="Handbook" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3pt7l")
+text = "Handbook"
+
+[node name="Option" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3pt7l")
+text = "Option"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_3pt7l")
+text = "Exit"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
