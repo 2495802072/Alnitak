@@ -10,4 +10,5 @@ func _close():
 
 
 func _on_back_pressed():
+	G._save_game_settings()
 	_close_self()

@@ -10,8 +10,10 @@ var viewConfigMap := {}
 
 func _ready():
 	_build_view_config_map()
-	
-	G._get_view_manager().open_view("StartMenu")
+	if FileAccess.file_exists(G.language_file):
+		G._get_view_manager().open_view("StartMenu")
+	else:
+		pass #打开语种界面
 
 func open_view(viewId:StringName) ->int:
 	var config := _get_view_config(viewId)
