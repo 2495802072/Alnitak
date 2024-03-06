@@ -1,5 +1,7 @@
 extends Node
 
+var override_file:String = ProjectSettings.globalize_path("res://override.cfg")
+
 func _ready():
 	pass
 
@@ -13,3 +15,9 @@ func _get_view_manager() -> GUIViewManager:
 	else:
 		print("can not find manager")
 		return
+
+func _save_game_setting():
+	pass
+
+func _load_game_setting():
+	pass

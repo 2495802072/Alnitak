@@ -58,16 +58,17 @@ func _input(event):
 			disabled = false
 			
 
-
 func update_inputmap(oldkey:InputEventWithModifiers,newkey:InputEventWithModifiers):
+	var dir = ProjectSettings.get_setting("input/"+action)
 	if newkey:
 		if oldkey: #具备旧的按键绑定(更换)
-			InputMap.action_erase_event(action,oldkey)
-			InputMap.action_add_event(action,newkey)
+			dir["events"].erase(oldkey)
+			dir["events"].append(newkey)
 		else: #不具备(添加)
-			InputMap.action_add_event(action,newkey)
+			dir["events"].append(newkey)
 	else: #删除
-			InputMap.action_erase_event(action,oldkey)
+		dir["events"].erase(oldkey)
+	ProjectSettings.set_setting("input/123",dir)
 	reset_text()
 
 func reset_text():
