@@ -39,7 +39,6 @@ func _save_game_settings():
 func _change_language(lang:String):
 	if TranslationServer.get_locale() != lang:
 		TranslationServer.set_locale(lang)
-		_save_language(lang)
 
 func _save_language(lang:String):
 	var data = {

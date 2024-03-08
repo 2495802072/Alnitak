@@ -1,5 +1,6 @@
 class_name GUIViewManager extends Node
 
+
 @export var ViewConfigList:Array[GUIViewConfig] = []
 @export var guiRoot:Control
 
@@ -8,12 +9,13 @@ var viewInstanceMap := {}
 
 var viewConfigMap := {}
 
+var has_language:bool = FileAccess.file_exists(G.language_file)
+
 func _ready():
 	_build_view_config_map()
-	if FileAccess.file_exists(G.language_file):
-		G._get_view_manager().open_view("StartMenu")
-	else:
-		pass #打开语种界面
+	G._get_view_manager().open_view("StartMenu")
+	if not has_language:
+		G._get_view_manager().open_view("SettingsMenu")
 
 func open_view(viewId:StringName) ->int:
 	var config := _get_view_config(viewId)

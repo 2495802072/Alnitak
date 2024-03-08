@@ -155,11 +155,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 3
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -299,7 +297,25 @@ text = "Voice Setting"
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "条目1"
+
+[node name="HSlider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+
 [node name="ControlSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
