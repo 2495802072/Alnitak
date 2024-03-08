@@ -1,12 +1,14 @@
-[gd_scene load_steps=19 format=3 uid="uid://bcnrrcnj2hs5d"]
+[gd_scene load_steps=21 format=3 uid="uid://bcnrrcnj2hs5d"]
 
 [ext_resource type="Theme" uid="uid://duqh8hbo60utg" path="res://User Interface/GUI Theme/option_menu.tres" id="1_awp53"]
 [ext_resource type="Script" path="res://User Interface/script/turn_page.gd" id="2_4t6ib"]
 [ext_resource type="Script" path="res://User Interface/script/setting_menu.gd" id="2_5ntlk"]
 [ext_resource type="Script" path="res://User Interface/script/language_chaunging.gd" id="3_2xscg"]
 [ext_resource type="Script" path="res://addons/custom_nodes/nodes/bind_button.gd" id="4_5j5og"]
-[ext_resource type="Texture2D" uid="uid://cmrsto4n85bge" path="res://User Interface/asset/reset.svg" id="5_t2iny"]
+[ext_resource type="Script" path="res://User Interface/script/audio_slider.gd" id="4_w51vx"]
+[ext_resource type="Texture2D" uid="uid://cmrsto4n85bge" path="res://User Interface/asset/picture/reset.svg" id="5_8pcqt"]
 [ext_resource type="Script" path="res://User Interface/script/reset.gd" id="6_4a43j"]
+[ext_resource type="AudioStream" uid="uid://dsodaf4pdwyq8" path="res://User Interface/asset/voice/buttom_click.mp3" id="8_04irl"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_dx7lw"]
 device = -1
@@ -155,9 +157,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 2
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -268,7 +272,6 @@ layout_mode = 2
 theme = ExtResource("1_awp53")
 
 [node name="VoiceSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -297,22 +300,68 @@ text = "Voice Setting"
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+[node name="MasterVolume" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
 collapsed = true
 
-[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/MasterVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
-text = "条目1"
+text = "master"
 
-[node name="HSlider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+[node name="HSlider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/MasterVolume"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
+tick_count = 7
+ticks_on_borders = true
+script = ExtResource("4_w51vx")
+
+[node name="BackgroundMusic" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/BackgroundMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "BGM"
+
+[node name="HSlider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/BackgroundMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+tick_count = 7
+ticks_on_borders = true
+script = ExtResource("4_w51vx")
+bus_index = 1
+
+[node name="SoundEffect" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/SoundEffect"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "SFX"
+
+[node name="HSlider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/VoiceSettingPage/MarginContainer/VBoxContainer/SoundEffect"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+value = 6.0
+tick_count = 7
+ticks_on_borders = true
+script = ExtResource("4_w51vx")
+bus_index = 2
 
 [node name="ControlSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
 visible = false
@@ -369,7 +418,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_dx7lw")
 
@@ -412,7 +461,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_5sye6")
 
@@ -455,7 +504,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_hjqmw")
 
@@ -498,7 +547,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_eljvb")
 
@@ -541,7 +590,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventMouseButton_yx8qe")
 
@@ -584,7 +633,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventMouseButton_15v84")
 
@@ -627,7 +676,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_ew1lh")
 
@@ -670,7 +719,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_61bp1")
 
@@ -713,7 +762,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_ybtu6")
 
@@ -756,7 +805,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_xr2bq")
 
@@ -799,7 +848,7 @@ anchor_bottom = 1.0
 offset_right = 40.0
 grow_vertical = 2
 theme = ExtResource("1_awp53")
-icon = ExtResource("5_t2iny")
+icon = ExtResource("5_8pcqt")
 script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_uv7b1")
 
@@ -855,4 +904,14 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 3
 
+[node name="ButtomHoverVoice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_04irl")
+bus = &"SFX"
+
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Game" to="." method="_buttom_hover_voice"]
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Display" to="." method="_buttom_hover_voice"]
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Voice" to="." method="_buttom_hover_voice"]
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Control" to="." method="_buttom_hover_voice"]
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Language" to="." method="_buttom_hover_voice"]
+[connection signal="mouse_entered" from="HSplitContainer/Panel/VBoxContainer/Back" to="." method="_buttom_hover_voice"]
 [connection signal="pressed" from="HSplitContainer/Panel/VBoxContainer/Back" to="." method="_on_back_pressed"]
