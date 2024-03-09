@@ -18,5 +18,5 @@ func _on_back_pressed():
 func _turn_to_language():
 	$HSplitContainer/Panel2/TabContainer.current_tab = 4
 
-func _buttom_hover_voice():
+func _buttom_hover_voice(_flag:bool = true):
 	$ButtomHoverVoice.play(0.03)
