@@ -161,11 +161,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -246,6 +244,7 @@ size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
 
 [node name="DisplaySettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 

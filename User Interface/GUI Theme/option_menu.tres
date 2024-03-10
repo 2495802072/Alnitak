@@ -1,7 +1,11 @@
-[gd_resource type="Theme" format=3 uid="uid://duqh8hbo60utg"]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://duqh8hbo60utg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_478hv"]
+bg_color = Color(0.152941, 0.152941, 0.152941, 0.627451)
 
 [resource]
 Button/font_sizes/font_size = 40
 HSeparator/constants/separation = 30
 Label/font_sizes/font_size = 40
+Panel/styles/panel = SubResource("StyleBoxFlat_478hv")
 VBoxContainer/constants/separation = 20
