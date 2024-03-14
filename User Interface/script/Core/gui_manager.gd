@@ -4,10 +4,10 @@ class_name GUIViewManager extends Node
 @export var ViewConfigList:Array[GUIViewConfig] = []
 @export var guiRoot:Control
 
+var viewConfigMap := {}
+
 var viewInstanceCount := 0
 var viewInstanceMap := {}
-
-var viewConfigMap := {}
 
 var has_language:bool = FileAccess.file_exists(G.language_file)
 
@@ -21,7 +21,7 @@ func open_view(viewId:StringName) ->int:
 	var config := _get_view_config(viewId)
 	var instance := _get_new_view_instance_id()
 	var prefab:PackedScene = config.prefab
-	var view = prefab.instantiate() as BaseGUIView
+	var view:BaseGUIView = prefab.instantiate()
 	view.config = config
 	view.viewInstanceID = instance
 	viewInstanceMap[instance] = view

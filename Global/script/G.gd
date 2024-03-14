@@ -48,3 +48,11 @@ func _save_language(lang:String):
 	var file = FileAccess.open(language_file,FileAccess.WRITE)
 	file.store_string(strs)
 	pass
+
+func _get_role_manager() -> RoleManager:
+	var manager =  _get_game_root().get_node_or_null("%RoleManager")
+	if manager :
+		return manager
+	else:
+		print("can not find manager")
+		return

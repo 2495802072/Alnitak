@@ -37,6 +37,8 @@ enabled=PackedStringArray("res://addons/custom_nodes/plugin.cfg", "res://addons/
 [file_customization]
 
 folder_colors={
+"res://Asset/": "purple",
+"res://Data/": "purple",
 "res://Game/": "orange",
 "res://Game/scene/": "green",
 "res://Global/": "red",
@@ -124,3 +126,10 @@ bag={
 [internationalization]
 
 locale/translations=PackedStringArray("res://Language/language.en.translation", "res://Language/language.zh.translation", "res://Language/language.de.translation", "res://Language/language.es.translation", "res://Language/language.fr.translation", "res://Language/language.it.translation")
+
+[layer_names]
+
+2d_physics/layer_1="Map"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="NPC"
