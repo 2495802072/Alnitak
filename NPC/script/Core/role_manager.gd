@@ -31,8 +31,13 @@ func get_other_role_root() -> Node2D: ## 获取其他角色根节点
 	return other_role_root
 
 func save_player_data(player_name:String): ## 保存玩家数据于当前目录下的Data/player中
-	var path:String = "res://Data/player/{0}.dat".format([player_name])
+	var path:String = "res://Data/player/{0}.tres".format([player_name])
 	var path_local:String = ProjectSettings.globalize_path(path)
-	var file := FileAccess.open(path,FileAccess.WRITE)
-	file.store_string("玩家数据")
+	var saves = PlayerData.new()
+	saves.set_path(path_local)
+	saves.player = player_root.get_child(0)
+	if ResourceSaver.save(saves) == OK:
+		pass
+	else:
+		printerr("save had a error")
 	pass

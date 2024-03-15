@@ -1,0 +1,335 @@
+[gd_scene load_steps=9 format=3 uid="uid://hv6rboxwasuo"]
+
+[ext_resource type="Theme" uid="uid://dnk1itlvy5syr" path="res://User Interface/GUI Theme/role_select.tres" id="1_ppqpy"]
+[ext_resource type="Script" path="res://User Interface/script/role_create.gd" id="1_v05xo"]
+[ext_resource type="Texture2D" uid="uid://b5ixf48ugyrto" path="res://User Interface/asset/picture/heart.svg" id="3_3e1s1"]
+[ext_resource type="Texture2D" uid="uid://ryco6lsx6lwd" path="res://User Interface/asset/picture/HealthUP.svg" id="4_hiwo0"]
+[ext_resource type="Texture2D" uid="uid://b6ytwxatxkdab" path="res://User Interface/asset/picture/Mana.svg" id="5_3y6h2"]
+[ext_resource type="Texture2D" uid="uid://cfvq2lfc5sdr7" path="res://User Interface/asset/picture/ManaUP.svg" id="6_rkiya"]
+[ext_resource type="Texture2D" uid="uid://bbx7e531c5giu" path="res://User Interface/asset/picture/ATK.svg" id="7_6bvc0"]
+[ext_resource type="Texture2D" uid="uid://bd81rtn63tb8r" path="res://User Interface/asset/picture/DEF.svg" id="8_nm57u"]
+
+[node name="RoleCreate" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ppqpy")
+script = ExtResource("1_v05xo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -864.0
+offset_top = -486.0
+offset_right = 864.0
+offset_bottom = 486.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_ppqpy")
+collapsed = true
+dragger_visibility = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme = ExtResource("1_ppqpy")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.4
+theme = ExtResource("1_ppqpy")
+
+[node name="RoleList" type="GridContainer" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ppqpy")
+columns = 3
+
+[node name="VSplitContainer" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+theme = ExtResource("1_ppqpy")
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+placeholder_text = "Player Name"
+alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+alignment = 1
+item_count = 4
+selected = 0
+popup/item_0/text = "Free"
+popup/item_0/id = 0
+popup/item_1/text = "Easy"
+popup/item_1/id = 1
+popup/item_2/text = "Normal"
+popup/item_2/id = 2
+popup/item_3/text = "Difficult"
+popup/item_3/id = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+collapsed = true
+dragger_visibility = 1
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="CenterContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel/TextureRect"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="GridContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+columns = 2
+
+[node name="Health" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Health"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("3_3e1s1")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/HealthUP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("4_hiwo0")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Mana" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Mana"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("5_3y6h2")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ManaUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/ManaUP"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("6_rkiya")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="ATK" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/ATK"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("7_6bvc0")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="DEF" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/DEF"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+texture = ExtResource("8_nm57u")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="Bag" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Bag"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit8" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit8"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit9" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit9"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit10" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_ppqpy")
+alignment = 2
+editable = false
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit10"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0298013
+anchor_top = 0.1
+anchor_right = 0.228477
+anchor_bottom = 0.9
+grow_vertical = 2
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+collapsed = true
+dragger_visibility = 1
+
+[node name="Back" type="Button" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="Create" type="Button" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
+
+[connection signal="pressed" from="VBoxContainer/HSplitContainer2/Back" to="." method="_turn_back"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer2/Create" to="." method="_on_create_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://gjetvy86hfig"]
+[gd_scene load_steps=14 format=3 uid="uid://gjetvy86hfig"]
 
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_manager.gd" id="1_ech5f"]
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bcnrrcnj2hs5d" path="res://User Interface/scene/setting_menu.tscn" id="4_5qfxf"]
 [ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/role_select.tscn" id="5_aqo6q"]
 [ext_resource type="Script" path="res://NPC/script/Core/role_manager.gd" id="6_c8s4f"]
+[ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/role_create.tscn" id="6_naygb"]
 [ext_resource type="PackedScene" uid="uid://dx6dq8t1s467" path="res://NPC/scene/Player.tscn" id="7_vb76t"]
 [ext_resource type="Resource" uid="uid://dvg10g2r51ccy" path="res://Asset/PlayerResource/configs/GameEngineer.tres" id="8_pc5gd"]
 
@@ -24,12 +25,17 @@ script = ExtResource("2_4ouet")
 id = &"RoleSelect"
 prefab = ExtResource("5_aqo6q")
 
+[sub_resource type="Resource" id="Resource_hyxhx"]
+script = ExtResource("2_4ouet")
+id = &"RoleCreate"
+prefab = ExtResource("6_naygb")
+
 [node name="Game" type="Node"]
 
 [node name="GUIViewManager" type="Node" parent="." node_paths=PackedStringArray("guiRoot")]
 unique_name_in_owner = true
 script = ExtResource("1_ech5f")
-ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm")])
+ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm"), SubResource("Resource_hyxhx")])
 guiRoot = NodePath("../GUIRoot")
 
 [node name="RoleManager" type="Node" parent="." node_paths=PackedStringArray("player_root")]

@@ -1,13 +1,11 @@
 [gd_resource type="Resource" script_class="ChartletConfig" load_steps=15 format=3 uid="uid://dvg10g2r51ccy"]
 
+[ext_resource type="Texture2D" uid="uid://ceakyrn42pb72" path="res://NPC/asset/role1.png" id="1_dbv2j"]
 [ext_resource type="Script" path="res://NPC/script/Core/chartlet_config.gd" id="1_o5uet"]
 [ext_resource type="Texture2D" uid="uid://cf8g78k4gc5fj" path="res://NPC/asset/role2.png" id="2_4l683"]
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_61ivl"]
 points = PackedVector2Array(-20, -45, 20, -45, 20, 60, -20, 60)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_puu6g"]
-load_path = "res://.godot/imported/role1.png-42e48b50a7fc550631c4f1c62c06fe91.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cyb8k"]
 atlas = ExtResource("2_4l683")
@@ -90,4 +88,4 @@ script = ExtResource("1_o5uet")
 name = &"GameEngineer"
 collision_shape = SubResource("ConvexPolygonShape2D_61ivl")
 sprit_frames = SubResource("SpriteFrames_uik8p")
-icon = SubResource("CompressedTexture2D_puu6g")
+icon = ExtResource("1_dbv2j")
