@@ -2,8 +2,10 @@ extends BaseGUIView
 
 @onready var role_list:HBoxContainer = %RoleList as HBoxContainer
 @onready var players_path:String = G._get_player_local_dir_path()
+@onready var enter_button:Button = $CenterContainer/HSplitContainer/Enter as Button
 
 func _ready():
+	enter_button.hide()
 	dir_contents(players_path)
 
 func _open():
@@ -45,4 +47,5 @@ func add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添�
 	pass
 
 func selected(player:Resource):
+	enter_button.show()
 	pass

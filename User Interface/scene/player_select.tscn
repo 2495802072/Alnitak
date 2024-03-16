@@ -90,7 +90,7 @@ custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Back"
 
-[node name="Back2" type="Button" parent="CenterContainer/HSplitContainer"]
+[node name="Enter" type="Button" parent="CenterContainer/HSplitContainer"]
 visible = false
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
@@ -98,3 +98,4 @@ text = "Enter"
 
 [connection signal="pressed" from="Panel/MarginContainer/ScrollContainer/HSplit/AddButton" to="." method="change_view_to_create_player"]
 [connection signal="pressed" from="CenterContainer/HSplitContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CenterContainer/HSplitContainer/Enter" to="." method="next_view"]
