@@ -84,8 +84,17 @@ animations = [{
 }]
 
 [resource]
+resource_local_to_scene = true
+resource_name = "GameEngineer"
 script = ExtResource("1_o5uet")
 name = &"GameEngineer"
 collision_shape = SubResource("ConvexPolygonShape2D_61ivl")
 sprit_frames = SubResource("SpriteFrames_uik8p")
 icon = ExtResource("1_dbv2j")
+HP_base = 100
+HP_buff = 1.0
+MP_base = 0
+ATK_base = 1
+ATK_buff = 1.0
+DEF_base = 1
+DEF_buff = 1.0

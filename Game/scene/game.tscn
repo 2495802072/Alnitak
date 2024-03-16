@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://gjetvy86hfig"]
+[gd_scene load_steps=12 format=3 uid="uid://gjetvy86hfig"]
 
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_manager.gd" id="1_ech5f"]
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/role_select.tscn" id="5_aqo6q"]
 [ext_resource type="Script" path="res://NPC/script/Core/role_manager.gd" id="6_c8s4f"]
 [ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/role_create.tscn" id="6_naygb"]
-[ext_resource type="PackedScene" uid="uid://dx6dq8t1s467" path="res://NPC/scene/Player.tscn" id="7_vb76t"]
-[ext_resource type="Resource" uid="uid://dvg10g2r51ccy" path="res://Asset/PlayerResource/configs/GameEngineer.tres" id="8_pc5gd"]
 
 [sub_resource type="Resource" id="Resource_7mtms"]
 script = ExtResource("2_4ouet")
@@ -44,10 +42,6 @@ script = ExtResource("6_c8s4f")
 player_root = NodePath("../PlayerRoot")
 
 [node name="PlayerRoot" type="Node2D" parent="."]
-
-[node name="Player" parent="PlayerRoot" instance=ExtResource("7_vb76t")]
-player_name = "1211"
-config = ExtResource("8_pc5gd")
 
 [node name="GUIRoot" type="Control" parent="."]
 layout_mode = 3

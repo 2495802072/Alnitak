@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="PlayerData" load_steps=2 format=3 uid="uid://bcqmrk01hdng1"]
-
-[ext_resource type="Script" path="res://NPC/script/player_data.gd" id="1_e35yh"]
-
-[resource]
-script = ExtResource("1_e35yh")

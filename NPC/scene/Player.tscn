@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dx6dq8t1s467"]
 
-[ext_resource type="Script" path="res://NPC/script/player_base.gd" id="1_61vyh"]
+[ext_resource type="Script" path="res://NPC/script/player_data.gd" id="1_61vyh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvdxk"]
 

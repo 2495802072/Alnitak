@@ -9,7 +9,7 @@ var static_role_list:Array = [] ##受世界决定，由[method _build_role_list]
 var role_instance_index:int = 0 ## 实例化编号
 var role_instance_list:Dictionary = {} ## 实例化role的列表{编号：roleBase}
 
-func add_player(player:PlayerBase): ## 添加玩家
+func add_player(player:Player): ## 添加玩家
 	player_root.add_child(player)
 	pass
 

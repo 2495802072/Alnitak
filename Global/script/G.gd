@@ -2,6 +2,7 @@ extends Node
 
 var override_file:String = ProjectSettings.globalize_path("res://override.cfg")
 var language_file:String = ProjectSettings.globalize_path("res://language.json")
+var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
 
 func _ready():
 	if FileAccess.file_exists(language_file):
@@ -23,6 +24,9 @@ func _ready():
 
 func _get_game_root() -> Node:
 	return get_node("/root/Game")
+
+func _get_player_local_dir_path() -> String:
+	return player_local_dir_path
 
 func _get_view_manager() -> GUIViewManager:
 	var manager =  _get_game_root().get_node_or_null("%GUIViewManager")

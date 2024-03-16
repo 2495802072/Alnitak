@@ -57,6 +57,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.4
 theme = ExtResource("1_ppqpy")
+vertical_scroll_mode = 0
 
 [node name="RoleList" type="GridContainer" parent="VBoxContainer/HSplitContainer/Panel/ScrollContainer"]
 unique_name_in_owner = true
@@ -75,14 +76,16 @@ theme = ExtResource("1_ppqpy")
 layout_mode = 2
 theme = ExtResource("1_ppqpy")
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+[node name="PlayerName" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 placeholder_text = "Player Name"
 alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+[node name="Difficultes" type="OptionButton" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
@@ -120,19 +123,19 @@ size_flags_horizontal = 3
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel/TextureRect"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="GridContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer"]
+[node name="NumericalValueBox" type="GridContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="Health" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="Health" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Health"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Health"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -144,14 +147,14 @@ texture = ExtResource("3_3e1s1")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="HealthUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/HealthUP"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/HealthUP"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -163,14 +166,14 @@ texture = ExtResource("4_hiwo0")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Mana" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="Mana" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Mana"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Mana"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -182,14 +185,14 @@ texture = ExtResource("5_3y6h2")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="ManaUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="ManaUP" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/ManaUP"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/ManaUP"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -201,14 +204,14 @@ texture = ExtResource("6_rkiya")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="ATK" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="ATK" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/ATK"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/ATK"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -220,14 +223,14 @@ texture = ExtResource("7_6bvc0")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="DEF" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="DEF" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/DEF"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/DEF"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -239,14 +242,14 @@ texture = ExtResource("8_nm57u")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Bag" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="Bag" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/Bag"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Bag"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -257,14 +260,14 @@ grow_vertical = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit8" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="LineEdit8" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit8"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/LineEdit8"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -275,14 +278,14 @@ grow_vertical = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit9" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="LineEdit9" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit9"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/LineEdit9"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -293,14 +296,14 @@ grow_vertical = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="LineEdit10" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer"]
+[node name="LineEdit10" type="LineEdit" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_ppqpy")
 alignment = 2
 editable = false
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/VBoxContainer/LineEdit10"]
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/LineEdit10"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0298013
@@ -331,5 +334,9 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Create"
 
+[connection signal="cfg_be_changed" from="." to="." method="update_ui"]
+[connection signal="cfg_be_changed" from="." to="." method="initialize_player_data"]
+[connection signal="focus_exited" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="text_focus_exited"]
+[connection signal="text_submitted" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="set_player_name"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Back" to="." method="_turn_back"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Create" to="." method="_on_create_pressed"]
