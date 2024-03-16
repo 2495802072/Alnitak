@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
 [ext_resource type="PackedScene" uid="uid://wc0cmav6dnfr" path="res://User Interface/scene/primary_menu.tscn" id="2_oupqu"]
 [ext_resource type="PackedScene" uid="uid://bcnrrcnj2hs5d" path="res://User Interface/scene/setting_menu.tscn" id="4_5qfxf"]
-[ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/role_select.tscn" id="5_aqo6q"]
+[ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/player_select.tscn" id="5_aqo6q"]
 [ext_resource type="Script" path="res://NPC/script/Core/role_manager.gd" id="6_c8s4f"]
 [ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/role_create.tscn" id="6_naygb"]
 

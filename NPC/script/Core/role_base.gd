@@ -13,6 +13,9 @@ signal make_attack(target:int,damage:int) ## 造成伤害时发出信号，targe
 @export var DEF_buff:float  ##角色防御力增益,角色实际防御力 = DEF_base*DEF_buff
 @export var buff_list:Array ## TODO 角色增益列表
 
+@export var HP_UP:int ##HP恢复速度
+@export var MP_UP:int ##MP恢复速度
+
 enum CLAN{
 	PLAYER, ## 玩家
 	ENEMY,## 敌人

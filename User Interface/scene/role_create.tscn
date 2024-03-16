@@ -120,7 +120,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel/TextureRect"]
+[node name="Chartlet" type="TextureRect" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel/TextureRect"]
 layout_mode = 2
 
 [node name="NumericalValueBox" type="GridContainer" parent="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer"]
@@ -334,9 +334,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Create"
 
-[connection signal="cfg_be_changed" from="." to="." method="update_ui"]
 [connection signal="cfg_be_changed" from="." to="." method="initialize_player_data"]
+[connection signal="data_be_changed" from="." to="." method="update_ui"]
 [connection signal="focus_exited" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="text_focus_exited"]
 [connection signal="text_submitted" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="set_player_name"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Health" to="." method="set_player_num" binds= ["Health"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/HealthUP" to="." method="set_player_num" binds= ["HealthUP"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Mana" to="." method="set_player_num" binds= ["Mana"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/ManaUP" to="." method="set_player_num" binds= ["ManaUP"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/ATK" to="." method="set_player_num" binds= ["ATK"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/DEF" to="." method="set_player_num" binds= ["DEF"]]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Bag" to="." method="set_player_num" binds= ["Bag"]]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Back" to="." method="_turn_back"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Create" to="." method="_on_create_pressed"]

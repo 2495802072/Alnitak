@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1yibbyhuinq3"]
 
 [ext_resource type="Theme" uid="uid://dnk1itlvy5syr" path="res://User Interface/GUI Theme/role_select.tres" id="1_rv4c0"]
-[ext_resource type="Script" path="res://User Interface/script/role_select.gd" id="2_n723v"]
+[ext_resource type="Script" path="res://User Interface/script/player_select.gd" id="2_4hweu"]
 [ext_resource type="Texture2D" uid="uid://bngs35lwouclc" path="res://User Interface/asset/picture/add.svg" id="2_ywub2"]
 
 [node name="RoleSelect" type="Control"]
@@ -12,7 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_rv4c0")
-script = ExtResource("2_n723v")
+script = ExtResource("2_4hweu")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 350)
@@ -54,7 +54,7 @@ size_flags_horizontal = 6
 size_flags_vertical = 6
 theme = ExtResource("1_rv4c0")
 collapsed = true
-dragger_visibility = 2
+dragger_visibility = 1
 
 [node name="RoleList" type="HBoxContainer" parent="Panel/MarginContainer/ScrollContainer/HSplit"]
 unique_name_in_owner = true
@@ -68,6 +68,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_rv4c0")
 icon = ExtResource("2_ywub2")
+icon_alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -79,10 +80,21 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Back" type="Button" parent="CenterContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="CenterContainer"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 1
+
+[node name="Back" type="Button" parent="CenterContainer/HSplitContainer"]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 text = "Back"
 
+[node name="Back2" type="Button" parent="CenterContainer/HSplitContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+text = "Enter"
+
 [connection signal="pressed" from="Panel/MarginContainer/ScrollContainer/HSplit/AddButton" to="." method="change_view_to_create_player"]
-[connection signal="pressed" from="CenterContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="CenterContainer/HSplitContainer/Back" to="." method="_on_back_pressed"]

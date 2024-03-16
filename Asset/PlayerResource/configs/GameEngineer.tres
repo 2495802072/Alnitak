@@ -98,3 +98,5 @@ ATK_base = 1
 ATK_buff = 1.0
 DEF_base = 1
 DEF_buff = 1.0
+HP_UP = 5
+MP_UP = 5
