@@ -9,6 +9,7 @@ extends BaseGUIView
 @onready var Health:LineEdit = $HBoxContainer/Health as LineEdit
 @onready var Mana:LineEdit = $HBoxContainer/Mana as LineEdit
 @onready var Bag:LineEdit = $HBoxContainer/Bag as LineEdit
+@onready var role_manager:RoleManager = G._get_role_manager() as RoleManager
 
 var player_selected:PlayerData
 var button_selected:ResourceButton
@@ -35,16 +36,16 @@ func change_view_to_create_player():
 	_close_self()
 
 func next_view():
-	G._get_role_manager().create_player(player_selected)
+	role_manager.create_player(player_selected)
 	G._get_view_manager().open_view("StartMenu")
 	_close_self()
 	pass
 
-func dir_contents(path): ##遍历path文件夹,获取预设贴图
+func dir_contents(path:String): ##遍历path文件夹,获取预设贴图
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
-		var file_name = dir.get_next()
+		var file_name:String = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
 				add_item_to_list(players_path+file_name)
@@ -59,7 +60,9 @@ func dir_contents(path): ##遍历path文件夹,获取预设贴图
 
 func add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添加到PlayerList
 	var rbutton:ResourceButton = ResourceButton.new()
-	rbutton.resource = ResourceLoader.load(file_name,"PlayerData")
+	rbutton.resource = ResourceLoader.load(file_name,"PlayerData") as PlayerData
+	if not rbutton.get_resource_name() in role_manager.get_players_name_list():
+		role_manager.add_player_name_to_list(rbutton.get_resource_name()) ## 添加已经使用的名字
 	rbutton.set_h_size_flags(Control.SIZE_SHRINK_CENTER)
 	rbutton.custom_minimum_size = Vector2(250,250)
 	rbutton._sand_resouce.connect(selected.bind(rbutton))
@@ -79,8 +82,12 @@ func selected(player:PlayerData,button:ResourceButton):
 
 func delete_player():
 	var path:String = player_selected.resource_path
-	DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
-	Aflash.play("RESET")
-	role_list.remove_child(button_selected)
-	_ready()
+	if OS.has_feature("editor"):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+	else:
+		DirAccess.remove_absolute(OS.get_executable_path().get_base_dir().path_join(path))
+	role_manager.reset_players_name_list()
+	## 重启当前页面
+	_close_self()
+	G._get_view_manager().open_view("RoleSelect")
 	pass

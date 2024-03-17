@@ -20,3 +20,6 @@ class_name ChartletConfig extends Resource
 
 func _get_collision_size() -> Rect2:
 	return collision_shape.get_rect()
+
+func get_icon() -> Texture2D:
+	return icon

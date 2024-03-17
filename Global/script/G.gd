@@ -4,6 +4,16 @@ var override_file:String = ProjectSettings.globalize_path("res://override.cfg")
 var language_file:String = ProjectSettings.globalize_path("res://language.json")
 var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
 
+func _enter_tree():
+	if OS.has_feature("editor"):
+		# 从编辑器二进制文件运行。
+		override_file = ProjectSettings.globalize_path("res://override.cfg")
+		language_file = ProjectSettings.globalize_path("res://language.json")
+	else:
+		# 从导出的项目运行。
+		override_file = OS.get_executable_path().get_base_dir().path_join("override.cfg")
+		language_file = OS.get_executable_path().get_base_dir().path_join("language.json")
+
 func _ready():
 	if FileAccess.file_exists(language_file):
 		var strs = FileAccess.get_file_as_string(language_file)

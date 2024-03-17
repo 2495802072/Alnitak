@@ -1,6 +1,7 @@
 ## 管理世界内所有roles
 class_name RoleManager extends Node
 
+var player_name_list:Array[String] = [] ## 储存玩家昵称列表，防止重名以及防止重复加载
 @export var player_root:Node2D ## 保存玩家根节点，在Godot编辑器绑定
 @export var other_role_root:Node2D## 保存其他roles根节点，在Godot编辑器绑定
 
@@ -11,8 +12,11 @@ var role_instance_list:Dictionary = {} ## 实例化role的列表{编号：roleBa
 
 var player_sence := preload("res://NPC/scene/Player.tscn")
 
+func _ready():
+	reset_players_name_list() ## 每次重启游戏都重置玩家名字列表
+
 func create_player(player_data:PlayerData) -> void: ## 创建玩家
-	var player = player_sence.instantiate()
+	var player := player_sence.instantiate()
 	player.data = player_data
 	player.name = player_data.player_name
 	add_player(player)
@@ -24,6 +28,16 @@ func _get_role_instance_index() -> int: ##获取role固定编号
 	var i:int = role_instance_index
 	role_instance_index += 1
 	return i
+
+func get_players_name_list() -> Array:
+	return player_name_list
+
+func add_player_name_to_list(s:String) -> void:
+	player_name_list.append(s)
+	pass
+
+func reset_players_name_list() -> void:
+	player_name_list = []
 
 func _build_role_list() -> void: ## 每个世界存在自定义的role种类，但是统一由[RoleManager]管理，此函数用于给[RoleManager]建立列表
 	pass

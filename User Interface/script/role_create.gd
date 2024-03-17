@@ -4,7 +4,7 @@ signal cfg_be_changed() ## 玩家的config数据更改时产生信号
 signal data_be_changed() ## 玩家的数值发生改变时发出
 
 ## 系统预设贴图路径
-var role_list_path_local:String = ProjectSettings.globalize_path("res://Asset/PlayerResource/configs/")
+var role_list_path_local:String 
 
 ## 角色保存路径
 @onready var role_save_local_path:String = G._get_player_local_dir_path()
@@ -13,8 +13,19 @@ var role_list_path_local:String = ProjectSettings.globalize_path("res://Asset/Pl
 @onready var num_box:GridContainer = $VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox as GridContainer
 @onready var chartlet:TextureRect = $VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/Panel/TextureRect/Chartlet as TextureRect
 @onready var create_button:Button = $VBoxContainer/HSplitContainer2/Create as Button
+@onready var texts_for_player:TextEdit = $VBoxContainer/HSplitContainer/VSplitContainer/TextEdit as TextEdit
+@onready var role_manager:RoleManager = G._get_role_manager() as RoleManager
 
 var data:PlayerData
+
+func _enter_tree(): ##导出后可以删除 if 【上】语句
+	if OS.has_feature("editor"):
+		# 从编辑器二进制文件运行。
+		role_list_path_local = ProjectSettings.globalize_path("res://Asset/PlayerResource/configs/")
+	else:
+		# 从导出的项目运行。
+		role_list_path_local = OS.get_executable_path().get_base_dir().path_join("Asset/PlayerResource/configs/")
+
 
 func _ready():
 	dir_contents(role_list_path_local)
@@ -23,11 +34,11 @@ func _ready():
 	create_button.hide()
 
 ## 页面初始化过程
-func dir_contents(path): ##遍历path文件夹,获取预设贴图
-	var dir = DirAccess.open(path)
+func dir_contents(path:String): ##遍历path文件夹,获取预设贴图
+	var dir:DirAccess = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
-		var file_name = dir.get_next()
+		var file_name:String = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
 				add_item_to_list(role_list_path_local+file_name)
@@ -60,12 +71,14 @@ func update_ui(): ## 与cfg_be_changed信号直接连接,主要用于修改控�
 	if data.config.resource_name == "GameEngineer": ##特殊角色
 		difficult_button.select(0)
 		difficult_button.disabled = true
-		for item:LineEdit in num_box.get_children():
+		texts_for_player.editable = true
+		for item in num_box.get_children():
 			if item is LineEdit:
 				item.editable = true
 	else:
 		difficult_button.disabled = false
-		for item:LineEdit in num_box.get_children():
+		texts_for_player.editable = false
+		for item in num_box.get_children():
 			if item is LineEdit:
 				item.editable = false
 	chartlet.texture = data.config.icon
@@ -89,7 +102,7 @@ func set_player_num(new_num:String,type:String):## 设置engineer的各项数值
 			data.bag_size = int(new_num)
 
 func update_lineedits():##更新显示的数值
-	for item:LineEdit in num_box.get_children():
+	for item in num_box.get_children():
 			if item is LineEdit:
 				match (item.name): ##给显示内容赋值
 					"Health":
@@ -126,9 +139,15 @@ func set_player_config(cfg:ChartletConfig) -> void:
 ## UI操作
 func _on_create_pressed() -> void:
 	if DirAccess.dir_exists_absolute(role_save_local_path): 
-		if data.player_name != "":
-			data.save_player()
-			_turn_back()
+		if data.player_name != "": ##防止空名称
+			if data.player_name in role_manager.get_players_name_list(): ## 防止玩家数据重名
+				data.player_name = ""
+				player_name_textbox.clear()
+				player_name_textbox.set_placeholder("name be used,write again different")
+				player_name_textbox.grab_focus()
+			else:
+				data.save_player()
+				_turn_back()
 		else:
 			player_name_textbox.grab_focus()
 	else:
