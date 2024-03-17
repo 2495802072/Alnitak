@@ -9,9 +9,16 @@ var static_role_list:Array = [] ##受世界决定，由[method _build_role_list]
 var role_instance_index:int = 0 ## 实例化编号
 var role_instance_list:Dictionary = {} ## 实例化role的列表{编号：roleBase}
 
-func add_player(player:Player): ## 添加玩家
+var player_sence := preload("res://NPC/scene/Player.tscn")
+
+func create_player(player_data:PlayerData) -> void: ## 创建玩家
+	var player = player_sence.instantiate()
+	player.data = player_data
+	player.name = player_data.player_name
+	add_player(player)
+
+func add_player(player:Node2D): ## 添加玩家
 	player_root.add_child(player)
-	pass
 
 func _get_role_instance_index() -> int: ##获取role固定编号
 	var i:int = role_instance_index
@@ -30,14 +37,6 @@ func get_player_root() -> Node2D: ## 获取玩家根节点
 func get_other_role_root() -> Node2D: ## 获取其他角色根节点
 	return other_role_root
 
-func save_player_data(player_name:String): ## 保存玩家数据于当前目录下的Data/player中
-	var path:String = "res://Data/player/{0}.tres".format([player_name])
-	var path_local:String = ProjectSettings.globalize_path(path)
-	var saves = PlayerData.new()
-	saves.set_path(path_local)
-	saves.player = player_root.get_child(0)
-	if ResourceSaver.save(saves) == OK:
-		pass
-	else:
-		printerr("save had a error")
+func save_player_data(player_name:String): ## 保存玩家数据
+	
 	pass

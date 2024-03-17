@@ -1,6 +1,5 @@
 class_name GUIViewManager extends Node
 
-
 @export var ViewConfigList:Array[GUIViewConfig] = []
 @export var guiRoot:Control
 

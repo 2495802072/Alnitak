@@ -1,4 +1,4 @@
-class_name Player extends Node2D
+extends Node2D
 
 var data:PlayerData ## 使用Recource存储游戏数据
 
@@ -6,10 +6,14 @@ var data:PlayerData ## 使用Recource存储游戏数据
 @export var collision_shape:CollisionShape2D
 var instance_id:int = -1 ## 角色被分配的ID
 
+#func _init():
+	#animated_sprite = $AnimatedSprite2D as AnimatedSprite2D
+	#collision_shape = $RigidBody2D/CollisionShape2D as CollisionShape2D
+
 func _ready():
-	if data.config:
-		animated_sprite.sprite_frames = data.config.sprit_frames
-		collision_shape.shape = data.config.collision_shape
+	if data and data.config:
+		animated_sprite.set_sprite_frames(data.config.sprit_frames)
+		collision_shape.set_shape(data.config.collision_shape)
 	else:
 		printerr("角色模型获取失败")
 
@@ -22,7 +26,7 @@ func attack() -> void:
 	pass
 
 func _save_file() -> void:
-	G._get_role_manager().save_player_data(data.player_name)
+	ResourceSaver.save(data)
 
 func _rename() ->void:
 	pass
