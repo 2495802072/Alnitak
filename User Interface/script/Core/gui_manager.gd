@@ -1,5 +1,9 @@
 class_name GUIViewManager extends Node
 
+signal  alert_return_update()
+var alert_imformation:String = ""
+var alert_return:bool = false
+
 @export var ViewConfigList:Array[GUIViewConfig] = []
 @export var guiRoot:Control
 
@@ -56,7 +60,21 @@ func _get_view_by_instance(viewInstanceId:int) -> BaseGUIView:
 	return viewInstanceMap[viewInstanceId]
 
 func _build_view_config_map():
-	for config in ViewConfigList:
+	for config:GUIViewConfig in ViewConfigList:
 		if config == null or config.id.is_empty():
 			continue
 		viewConfigMap[config.id] = config
+
+func jump_alert(imformation:String) -> bool:
+	alert_imformation = imformation
+	alert_return = false
+	G._get_view_manager().open_view("Alert")
+	await alert_return_update
+	return alert_return
+
+func get_alert_imformation() -> String:
+	return alert_imformation
+
+func set_alert_return(flag:bool) -> void:
+	alert_return = flag
+	alert_return_update.emit()

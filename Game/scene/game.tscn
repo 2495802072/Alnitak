@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://gjetvy86hfig"]
+[gd_scene load_steps=16 format=3 uid="uid://gjetvy86hfig"]
 
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_manager.gd" id="1_ech5f"]
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
+[ext_resource type="PackedScene" uid="uid://0hl7u7wwdcc5" path="res://User Interface/scene/alert.tscn" id="2_h1f6s"]
 [ext_resource type="PackedScene" uid="uid://wc0cmav6dnfr" path="res://User Interface/scene/primary_menu.tscn" id="2_oupqu"]
 [ext_resource type="PackedScene" uid="uid://bcnrrcnj2hs5d" path="res://User Interface/scene/setting_menu.tscn" id="4_5qfxf"]
 [ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/player_select.tscn" id="5_aqo6q"]
 [ext_resource type="Script" path="res://NPC/script/Core/role_manager.gd" id="6_c8s4f"]
-[ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/role_create.tscn" id="6_naygb"]
+[ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/player_create.tscn" id="6_naygb"]
+[ext_resource type="PackedScene" uid="uid://dx6dq8t1s467" path="res://NPC/scene/Player.tscn" id="9_pd4fx"]
+[ext_resource type="Script" path="res://World/script/Core/world_manager.gd" id="10_7sheq"]
 
 [sub_resource type="Resource" id="Resource_7mtms"]
 script = ExtResource("2_4ouet")
@@ -28,20 +31,38 @@ script = ExtResource("2_4ouet")
 id = &"RoleCreate"
 prefab = ExtResource("6_naygb")
 
+[sub_resource type="Resource" id="Resource_x7j6m"]
+script = ExtResource("2_4ouet")
+id = &"Alert"
+prefab = ExtResource("2_h1f6s")
+
 [node name="Game" type="Node"]
 
 [node name="GUIViewManager" type="Node" parent="." node_paths=PackedStringArray("guiRoot")]
 unique_name_in_owner = true
 script = ExtResource("1_ech5f")
-ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm"), SubResource("Resource_hyxhx")])
+ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm"), SubResource("Resource_hyxhx"), SubResource("Resource_x7j6m")])
 guiRoot = NodePath("../GUIRoot")
 
-[node name="RoleManager" type="Node" parent="." node_paths=PackedStringArray("player_root")]
+[node name="RoleManager" type="Node" parent="." node_paths=PackedStringArray("player_root", "other_role_root")]
 unique_name_in_owner = true
 script = ExtResource("6_c8s4f")
-player_root = NodePath("../PlayerRoot")
+player_root = NodePath("../GamingBox/PlayerRoot")
+other_role_root = NodePath("../GamingBox/RolesRoot")
+player_sence = ExtResource("9_pd4fx")
 
-[node name="PlayerRoot" type="Node2D" parent="."]
+[node name="WorldManager" type="Node" parent="." node_paths=PackedStringArray("WorldRoot")]
+unique_name_in_owner = true
+script = ExtResource("10_7sheq")
+WorldRoot = NodePath("../GamingBox/WorldRoot")
+
+[node name="GamingBox" type="Node" parent="."]
+
+[node name="RolesRoot" type="Node2D" parent="GamingBox"]
+
+[node name="PlayerRoot" type="Node2D" parent="GamingBox"]
+
+[node name="WorldRoot" type="Node2D" parent="GamingBox"]
 
 [node name="GUIRoot" type="Control" parent="."]
 layout_mode = 3

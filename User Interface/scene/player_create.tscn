@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bbx7e531c5giu" path="res://User Interface/asset/picture/ATK.svg" id="7_6bvc0"]
 [ext_resource type="Texture2D" uid="uid://bd81rtn63tb8r" path="res://User Interface/asset/picture/DEF.svg" id="8_nm57u"]
 
-[node name="RoleCreate" type="Control"]
+[node name="PlayerCreate" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -91,7 +91,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
 alignment = 1
 item_count = 4
-selected = 0
+selected = 1
 popup/item_0/text = "Free"
 popup/item_0/id = 0
 popup/item_1/text = "Easy"
@@ -338,6 +338,7 @@ text = "Create"
 [connection signal="data_be_changed" from="." to="." method="update_ui"]
 [connection signal="focus_exited" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="text_focus_exited"]
 [connection signal="text_submitted" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="set_player_name"]
+[connection signal="item_selected" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/Difficultes" to="." method="set_difficult"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Health" to="." method="set_player_num" binds= ["Health"]]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/HealthUP" to="." method="set_player_num" binds= ["HealthUP"]]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Mana" to="." method="set_player_num" binds= ["Mana"]]

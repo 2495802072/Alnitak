@@ -18,8 +18,8 @@ var role_list_path_local:String
 
 var data:PlayerData
 
-func _enter_tree(): ##导出后可以删除 if 【上】语句
-	if OS.has_feature("editor"):
+func _enter_tree(): 
+	if OS.has_feature("editor"):#导出后可以删除 if 【上】语句
 		# 从编辑器二进制文件运行。
 		role_list_path_local = ProjectSettings.globalize_path("res://Asset/PlayerResource/configs/")
 	else:
@@ -132,9 +132,12 @@ func text_focus_exited(): ## 文本框失焦设置玩家名称
 func add_to_player_bag(item) -> void: ## 添加物品至玩家物品栏
 	pass
 
-func set_player_config(cfg:ChartletConfig) -> void:
+func set_player_config(cfg:ChartletConfig) -> void: ##设置玩家的贴图资源
 	data.config = cfg
 	cfg_be_changed.emit()
+
+func set_difficult(_index:int = 0) -> void: ##设置玩家难度
+	data.difficult = difficult_button.get_selected_id()
 
 ## UI操作
 func _on_create_pressed() -> void:
@@ -146,7 +149,8 @@ func _on_create_pressed() -> void:
 				player_name_textbox.set_placeholder("name be used,write again different")
 				player_name_textbox.grab_focus()
 			else:
-				data.save_player()
+				set_difficult()
+				data.save_as_player()
 				_turn_back()
 		else:
 			player_name_textbox.grab_focus()
@@ -158,5 +162,4 @@ func _on_create_pressed() -> void:
 
 func _turn_back() -> void:
 	G._get_view_manager().open_view("RoleSelect")
-	##此处视情况有可能需要queue玩家数据
 	_close_self()

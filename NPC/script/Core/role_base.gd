@@ -15,9 +15,18 @@ signal make_attack(target:int,damage:int) ## 造成伤害时发出信号，targe
 
 @export var HP_UP:int ##HP恢复速度
 @export var MP_UP:int ##MP恢复速度
+@export var speed:float = 300.0 ##移动速度
+@export var jump_velocity:float = -400.0 ##下落速度
 
 enum CLAN{
 	PLAYER, ## 玩家
 	ENEMY,## 敌人
 	NPC ## 其他中立role
+}
+
+enum DIFFICULT_PLAYER{
+	FREE, ##自由模式
+	EASY, ##简单
+	NORMAL, ##正常
+	DIFFICULT ##困难
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bcnrrcnj2hs5d"]
+[gd_scene load_steps=26 format=3 uid="uid://bcnrrcnj2hs5d"]
 
 [ext_resource type="Theme" uid="uid://duqh8hbo60utg" path="res://User Interface/GUI Theme/option_menu.tres" id="1_awp53"]
 [ext_resource type="Script" path="res://User Interface/script/turn_page.gd" id="2_4t6ib"]
@@ -34,7 +34,14 @@ unicode = 97
 [sub_resource type="InputEventKey" id="InputEventKey_eljvb"]
 device = -1
 keycode = 68
+physical_keycode = 68
+key_label = 68
 unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_7o2rs"]
+device = -1
+keycode = 32
+unicode = 32
 
 [sub_resource type="InputEventMouseButton" id="InputEventMouseButton_yx8qe"]
 button_index = 1
@@ -161,9 +168,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 3
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -459,9 +468,9 @@ script = ExtResource("4_w51vx")
 bus_index = 2
 
 [node name="ControlSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
+scroll_vertical = 124
 
 [node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage"]
 layout_mode = 2
@@ -647,6 +656,50 @@ script = ExtResource("6_4a43j")
 key = SubResource("InputEventKey_eljvb")
 
 [node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Move_right/OptionButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8669
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.05176e-05
+grow_horizontal = 0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+text = "X"
+script = ExtResource("6_4a43j")
+metadata/_edit_use_anchors_ = true
+
+[node name="Jump" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+collapsed = true
+
+[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "jump
+"
+
+[node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_awp53")
+text = "(null)"
+script = ExtResource("4_5j5og")
+action = "jump"
+
+[node name="Reset" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump/OptionButton"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 40.0
+grow_vertical = 2
+theme = ExtResource("1_awp53")
+icon = ExtResource("5_8pcqt")
+script = ExtResource("6_4a43j")
+key = SubResource("InputEventKey_7o2rs")
+
+[node name="Erase" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump/OptionButton"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.8669

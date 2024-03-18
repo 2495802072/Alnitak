@@ -1,4 +1,4 @@
-,zh,en,fr,it,de,es
+s,zh,en,fr,it,de,es
 Play,开始游戏,Play,Jouer,Gioca,Spielen,Jugar
 Handbook,图鉴,Handbook,,,,
 Option,设置,Options,Réglages,Opzioni,W?hlen: mir.,Opciones
@@ -19,6 +19,7 @@ move_up,↑,↑,↑,↑,↑,↑
 move_down,↓,↓,↓,↓,↓,↓
 move_left,←,←,←,←,←,←
 moce_right,→,→,→,→,→,→
+jump,跳跃,Jump,,,,
 attack,攻击,Attack,,,,
 spurt,冲刺,Spurt,,,,
 ,,,,,,
@@ -45,7 +46,8 @@ UI Scaling,UI 缩放,UI Scaling,,,,
 ,,,,,,
 Player Name,玩家昵称,Player Name,,,,
 Create,创建,Create,,,,
-Enter,进入,Enter,,,,
+Cancel,取消,Cancel,,,,
+Enter,确认,Enter,,,,
 Health,生命值,Health,,,,
 Mana,法力值,Mana,,,,
 ATK,攻击力,ATK,,,,
@@ -56,3 +58,6 @@ Easy,简单,Easy,,,,
 Normal,正常,Normal,,,,
 Difficult,困难,Difficult,,,,
 "name be used,write again different",昵称重复，请重新输入,"name be used,write again different",,,,
+,,,,,,
+SinglePlayer,单人游戏,SinglePlayer,,,,
+MultiPlayer,多人游戏,MultiPlayer,,,,

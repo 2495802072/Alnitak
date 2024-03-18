@@ -3,6 +3,7 @@ extends Node
 var override_file:String = ProjectSettings.globalize_path("res://override.cfg")
 var language_file:String = ProjectSettings.globalize_path("res://language.json")
 var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
+var world_local_dir_path:String = ProjectSettings.globalize_path("user://Data/world/")
 
 func _enter_tree():
 	if OS.has_feature("editor"):
@@ -38,6 +39,9 @@ func _get_game_root() -> Node:
 func _get_player_local_dir_path() -> String:
 	return player_local_dir_path
 
+func _get_world_local_dir_path() -> String:
+	return world_local_dir_path
+
 func _get_view_manager() -> GUIViewManager:
 	var manager =  _get_game_root().get_node_or_null("%GUIViewManager")
 	if manager:
@@ -65,6 +69,14 @@ func _save_language(lang:String):
 
 func _get_role_manager() -> RoleManager:
 	var manager =  _get_game_root().get_node_or_null("%RoleManager")
+	if manager :
+		return manager
+	else:
+		print("can not find manager")
+		return
+
+func _get_world_manager() -> WorldManager:
+	var manager =  _get_game_root().get_node_or_null("%WorldManager")
 	if manager :
 		return manager
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1yibbyhuinq3"]
+[gd_scene load_steps=13 format=3 uid="uid://c1yibbyhuinq3"]
 
 [ext_resource type="Theme" uid="uid://dnk1itlvy5syr" path="res://User Interface/GUI Theme/role_select.tres" id="1_rv4c0"]
 [ext_resource type="Script" path="res://User Interface/script/player_select.gd" id="2_4hweu"]
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(832, 502.5)]
+"values": [Vector2(832, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -33,7 +33,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 634)]
+"values": [Vector2(0, 274)]
 }
 
 [sub_resource type="Animation" id="Animation_k8mng"]
@@ -46,9 +46,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(0.406126, 0.406126),
+"transitions": PackedFloat32Array(0.406, 0.406),
 "update": 0,
-"values": [Vector2(832, 369.735), Vector2(832, 296.715)]
+"values": [Vector2(832, 0), Vector2(832, -70)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -60,7 +60,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(0.406, 0.406),
 "update": 0,
-"values": [Vector2(0, 634), Vector2(0, 710)]
+"values": [Vector2(0, 274), Vector2(0, 342)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_daytt"]
@@ -69,20 +69,68 @@ _data = {
 "show_ui": SubResource("Animation_k8mng")
 }
 
+[sub_resource type="Animation" id="Animation_0g77c"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 1080)]
+}
+
+[sub_resource type="Animation" id="Animation_o5usb"]
+resource_name = "be_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 1080), Vector2(0, 365)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcfa0"]
+_data = {
+"RESET": SubResource("Animation_0g77c"),
+"be_open": SubResource("Animation_o5usb")
+}
+
 [node name="PlayerSelect" type="Control"]
 layout_mode = 3
+anchor_top = 0.337963
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 1795.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rv4c0")
+script = ExtResource("2_4hweu")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_rv4c0")
-script = ExtResource("2_4hweu")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.661111
+anchor_top = 0.48951
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -107,17 +155,13 @@ text = "Enter"
 
 [node name="PlayerNameBox" type="LineEdit" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -128.0
-offset_top = -37.5
-offset_right = 128.0
-offset_bottom = 37.5002
+offset_left = 832.0
+offset_right = 1088.0
+offset_bottom = 75.0
 grow_horizontal = 2
-grow_vertical = 2
 placeholder_text = "PlayerName"
 alignment = 1
 editable = false
@@ -130,12 +174,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -960.0
-offset_top = 94.0
-offset_right = 960.0
-offset_bottom = 169.0
+offset_top = 274.0
+offset_right = 1920.0
+offset_bottom = 349.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="Difficult" type="LineEdit" parent="HBoxContainer"]
 layout_mode = 2
@@ -217,19 +261,17 @@ grow_vertical = 2
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
-[node name="Background" type="Panel" parent="."]
+[node name="ListBackground" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.5
+offset_bottom = 350.0
 grow_horizontal = 2
-grow_vertical = 2
 theme = ExtResource("1_rv4c0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_d5rj8")
 
-[node name="MarginContainer" type="MarginContainer" parent="Background"]
+[node name="MarginContainer" type="MarginContainer" parent="ListBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -240,11 +282,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_rv4c0")
 
-[node name="Panel" type="Panel" parent="Background/MarginContainer"]
+[node name="Panel" type="Panel" parent="ListBackground/MarginContainer"]
 layout_mode = 2
 theme = ExtResource("1_rv4c0")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ListBackground/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("1_rv4c0")
@@ -252,7 +294,7 @@ follow_focus = true
 horizontal_scroll_mode = 3
 vertical_scroll_mode = 0
 
-[node name="HSplit" type="HSplitContainer" parent="Background/MarginContainer/ScrollContainer"]
+[node name="HSplit" type="HSplitContainer" parent="ListBackground/MarginContainer/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
@@ -260,13 +302,13 @@ theme = ExtResource("1_rv4c0")
 collapsed = true
 dragger_visibility = 1
 
-[node name="RoleList" type="HBoxContainer" parent="Background/MarginContainer/ScrollContainer/HSplit"]
+[node name="RoleList" type="HBoxContainer" parent="ListBackground/MarginContainer/ScrollContainer/HSplit"]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_rv4c0")
 alignment = 1
 
-[node name="AddButton" type="Button" parent="Background/MarginContainer/ScrollContainer/HSplit"]
+[node name="AddButton" type="Button" parent="ListBackground/MarginContainer/ScrollContainer/HSplit"]
 custom_minimum_size = Vector2(250, 250)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -279,7 +321,13 @@ libraries = {
 "": SubResource("AnimationLibrary_daytt")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jcfa0")
+}
+autoplay = "be_open"
+
 [connection signal="pressed" from="CenterContainer/HSplitContainer/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="CenterContainer/HSplitContainer/Enter" to="." method="next_view"]
 [connection signal="pressed" from="HBoxContainer/Delete" to="." method="delete_player"]
-[connection signal="pressed" from="Background/MarginContainer/ScrollContainer/HSplit/AddButton" to="." method="change_view_to_create_player"]
+[connection signal="pressed" from="ListBackground/MarginContainer/ScrollContainer/HSplit/AddButton" to="." method="change_view_to_create_player"]

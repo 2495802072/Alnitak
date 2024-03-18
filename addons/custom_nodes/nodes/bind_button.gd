@@ -14,7 +14,8 @@ var flag:bool = false
 func _enter_tree():
 	if action != "" and InputMap.has_action(action):
 		var array = InputMap.action_get_events(action)
-		bindkey = array[0]
+		if array.size()>0:
+			bindkey = array[0]
 	button_up.connect(click.bind())
 
 ##初始化

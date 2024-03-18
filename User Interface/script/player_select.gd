@@ -4,7 +4,7 @@ extends BaseGUIView
 @onready var players_path:String = G._get_player_local_dir_path()
 @onready var enter_button:Button = $CenterContainer/HSplitContainer/Enter as Button
 @onready var name_box:LineEdit = $PlayerNameBox as LineEdit
-@onready var Aflash:AnimationPlayer = $AnimationPlayer as AnimationPlayer
+@onready var Aflash1:AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var difficult:LineEdit = $HBoxContainer/Difficult as LineEdit
 @onready var Health:LineEdit = $HBoxContainer/Health as LineEdit
 @onready var Mana:LineEdit = $HBoxContainer/Mana as LineEdit
@@ -25,6 +25,7 @@ func _open():
 	pass
 
 func _close():
+	Aflash1.play("RESET")
 	pass
 
 func _on_back_pressed():
@@ -72,22 +73,25 @@ func selected(player:PlayerData,button:ResourceButton):
 	player_selected = player
 	button_selected = button
 	name_box.text = player.player_name
-	difficult.text = "Free"
+	difficult.text = str(RoleBase.DIFFICULT_PLAYER.find_key(player.difficult))
 	Health.text = str(player.HP_base)
 	Mana.text = str(player.MP_base)
 	Bag.text = str(player.bag_size)
-	Aflash.play("RESET")
-	Aflash.play("show_ui")
+	Aflash1.play("RESET")
+	Aflash1.play("show_ui")
 	enter_button.show()
 
 func delete_player():
 	var path:String = player_selected.resource_path
-	if OS.has_feature("editor"):
-		DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
-	else:
-		DirAccess.remove_absolute(OS.get_executable_path().get_base_dir().path_join(path))
-	role_manager.reset_players_name_list()
-	## 重启当前页面
-	_close_self()
-	G._get_view_manager().open_view("RoleSelect")
+	## TODO 增加删除角色时 的确认步骤
+	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")
+	if f: #确认删除
+		if OS.has_feature("editor"):
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+		else:
+			DirAccess.remove_absolute(OS.get_executable_path().get_base_dir().path_join(path))
+		role_manager.reset_players_name_list()
+		# 重启当前页面
+		_close_self()
+		G._get_view_manager().open_view("RoleSelect")
 	pass
