@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gjetvy86hfig"]
+[gd_scene load_steps=22 format=3 uid="uid://gjetvy86hfig"]
 
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_manager.gd" id="1_ech5f"]
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
@@ -8,8 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://c1yibbyhuinq3" path="res://User Interface/scene/player_select.tscn" id="5_aqo6q"]
 [ext_resource type="Script" path="res://NPC/script/Core/role_manager.gd" id="6_c8s4f"]
 [ext_resource type="PackedScene" uid="uid://hv6rboxwasuo" path="res://User Interface/scene/player_create.tscn" id="6_naygb"]
+[ext_resource type="PackedScene" uid="uid://bub0ks18nq1y8" path="res://User Interface/scene/single_or_multiplayer.tscn" id="8_rvw7c"]
+[ext_resource type="PackedScene" uid="uid://da7hgsibg1jd7" path="res://User Interface/scene/host_game.tscn" id="9_ljrjc"]
 [ext_resource type="PackedScene" uid="uid://dx6dq8t1s467" path="res://NPC/scene/Player.tscn" id="9_pd4fx"]
 [ext_resource type="Script" path="res://World/script/Core/world_manager.gd" id="10_7sheq"]
+[ext_resource type="PackedScene" uid="uid://rig7dyi5blta" path="res://User Interface/scene/join_game.tscn" id="10_o227y"]
 
 [sub_resource type="Resource" id="Resource_7mtms"]
 script = ExtResource("2_4ouet")
@@ -36,12 +39,27 @@ script = ExtResource("2_4ouet")
 id = &"Alert"
 prefab = ExtResource("2_h1f6s")
 
+[sub_resource type="Resource" id="Resource_f1li2"]
+script = ExtResource("2_4ouet")
+id = &"SingleOrMultiplayer"
+prefab = ExtResource("8_rvw7c")
+
+[sub_resource type="Resource" id="Resource_3kgi7"]
+script = ExtResource("2_4ouet")
+id = &"HostGame"
+prefab = ExtResource("9_ljrjc")
+
+[sub_resource type="Resource" id="Resource_jmte3"]
+script = ExtResource("2_4ouet")
+id = &"JoinGame"
+prefab = ExtResource("10_o227y")
+
 [node name="Game" type="Node"]
 
 [node name="GUIViewManager" type="Node" parent="." node_paths=PackedStringArray("guiRoot")]
 unique_name_in_owner = true
 script = ExtResource("1_ech5f")
-ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm"), SubResource("Resource_hyxhx"), SubResource("Resource_x7j6m")])
+ViewConfigList = Array[ExtResource("2_4ouet")]([SubResource("Resource_7mtms"), SubResource("Resource_6r8dj"), SubResource("Resource_v3lkm"), SubResource("Resource_hyxhx"), SubResource("Resource_x7j6m"), SubResource("Resource_f1li2"), SubResource("Resource_3kgi7"), SubResource("Resource_jmte3")])
 guiRoot = NodePath("../GUIRoot")
 
 [node name="RoleManager" type="Node" parent="." node_paths=PackedStringArray("player_root", "other_role_root")]

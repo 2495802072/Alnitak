@@ -1,19 +1,22 @@
 extends Node
 
-var override_file:String = ProjectSettings.globalize_path("res://override.cfg")
-var language_file:String = ProjectSettings.globalize_path("res://language.json")
+var override_file:String 
+var language_file:String 
+var multi_file:String
 var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
 var world_local_dir_path:String = ProjectSettings.globalize_path("user://Data/world/")
 
-func _enter_tree():
+func _init():
 	if OS.has_feature("editor"):
 		# 从编辑器二进制文件运行。
 		override_file = ProjectSettings.globalize_path("res://override.cfg")
 		language_file = ProjectSettings.globalize_path("res://language.json")
+		multi_file = ProjectSettings.globalize_path("res://multiSetting.cfg")
 	else:
 		# 从导出的项目运行。
 		override_file = OS.get_executable_path().get_base_dir().path_join("override.cfg")
 		language_file = OS.get_executable_path().get_base_dir().path_join("language.json")
+		multi_file = OS.get_executable_path().get_base_dir().path_join("multiSetting.cfg")
 
 func _ready():
 	if FileAccess.file_exists(language_file):
@@ -82,3 +85,9 @@ func _get_world_manager() -> WorldManager:
 	else:
 		print("can not find manager")
 		return
+
+func has_multi_file() -> bool:
+	return FileAccess.file_exists(multi_file)
+
+func get_multi_file_path() -> String:
+	return multi_file

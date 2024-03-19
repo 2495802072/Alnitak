@@ -14,6 +14,7 @@ extends BaseGUIView
 var player_selected:PlayerData
 var button_selected:ResourceButton
 
+
 func _ready():
 	enter_button.hide()
 	dir_contents(players_path)
@@ -22,6 +23,7 @@ func _ready():
 	button_selected = ResourceButton.new()
 
 func _open():
+	Aflash1.play("RESET")# 窗口变化会导致变形，最大化和全屏时退出会导致下一次启动出现尺寸超出屏幕的情况
 	pass
 
 func _close():
@@ -29,14 +31,14 @@ func _close():
 	pass
 
 func _on_back_pressed():
-	G._get_view_manager().open_view("StartMenu")
+	G._get_view_manager().open_view("SingleOrMultiplayer")
 	_close_self()
 
 func change_view_to_create_player():
 	G._get_view_manager().open_view("RoleCreate")
 	_close_self()
 
-func next_view():
+func _next_view():
 	role_manager.create_player(player_selected)
 	G._get_view_manager().open_view("StartMenu")
 	_close_self()

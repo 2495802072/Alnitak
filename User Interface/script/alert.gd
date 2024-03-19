@@ -8,7 +8,7 @@ signal make_decision(flag:bool)
 @onready var view_manager:GUIViewManager = G._get_view_manager() as GUIViewManager
 
 func _ready():
-	alert_text = G._get_view_manager().get_alert_imformation() as String
+	alert_text = view_manager.get_alert_imformation() as String
 	make_decision.connect(view_manager.set_alert_return.bind())
 
 func _open():
