@@ -64,7 +64,7 @@ import/blender/enabled=false
 
 [gui]
 
-theme/default_theme_scale=2.5
+theme/default_theme_scale=1.5
 
 [input]
 

@@ -168,7 +168,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 3
+current_tab = 1
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
@@ -253,7 +253,6 @@ size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
 
 [node name="DisplaySettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -320,6 +319,16 @@ size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
 text = "Vsync"
 
+[node name="Cooling" type="Label" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer/Vsync/Label"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="CheckButton" type="CheckButton" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer/Vsync"]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -361,6 +370,16 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
 text = "UI Scaling"
+
+[node name="Num" type="Label" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer/UI Scaling (Need Restart)/Label"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="Hslider" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/DisplaySettingPage/MarginContainer/VBoxContainer/UI Scaling (Need Restart)"]
 layout_mode = 2
@@ -468,9 +487,9 @@ script = ExtResource("4_w51vx")
 bus_index = 2
 
 [node name="ControlSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
-scroll_vertical = 124
 
 [node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage"]
 layout_mode = 2
@@ -677,8 +696,7 @@ collapsed = true
 [node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "jump
-"
+text = "jump"
 
 [node name="OptionButton" type="Button" parent="HSplitContainer/Panel2/TabContainer/ControlSettingPage/MarginContainer/VBoxContainer/Jump"]
 layout_mode = 2

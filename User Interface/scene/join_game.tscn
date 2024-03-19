@@ -1,0 +1,62 @@
+[gd_scene load_steps=2 format=3 uid="uid://rig7dyi5blta"]
+
+[ext_resource type="Script" path="res://User Interface/script/join_game.gd" id="1_0r68l"]
+
+[node name="JoinGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0r68l")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(500, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="JoinIP" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+collapsed = true
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/JoinIP"]
+layout_mode = 2
+text = "Join IP:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/JoinIP"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "192.168.X.X"
+expand_to_text_length = true
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+collapsed = true
+dragger_visibility = 1
+
+[node name="Back" type="Button" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="Enter" type="Button" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enter"
+
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/Enter" to="." method="_on_enter_pressed"]

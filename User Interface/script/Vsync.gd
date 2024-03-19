@@ -18,8 +18,10 @@ func _on_toggled(toggled_on):
 	ProjectSettings.set_setting("display/window/vsync/vsync_mode",mode)
 	DisplayServer.window_set_vsync_mode(mode)
 	disabled = true
+	$"../Label/Cooling".text = "Cooling"
 	timer.start(1)
 
 func _cooling_over():
+	$"../Label/Cooling".text = ""
 	disabled = false
 	pass

@@ -3,6 +3,7 @@ extends BaseGUIView
 func _open():
 	_hide_others()
 	$HSplitContainer/Panel2/TabContainer.current_tab = 0
+	
 	if not G._get_view_manager().has_language:
 		_turn_to_language()
 

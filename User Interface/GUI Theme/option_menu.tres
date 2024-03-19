@@ -4,8 +4,6 @@
 bg_color = Color(0.152941, 0.152941, 0.152941, 0.627451)
 
 [resource]
-Button/font_sizes/font_size = 40
 HSeparator/constants/separation = 30
-Label/font_sizes/font_size = 40
 Panel/styles/panel = SubResource("StyleBoxFlat_478hv")
 VBoxContainer/constants/separation = 20
