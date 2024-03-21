@@ -17,7 +17,7 @@ var button_selected:ResourceButton
 
 func _ready():
 	enter_button.hide()
-	dir_contents(players_path)
+	_dir_contents(players_path)
 	
 	player_selected = PlayerData.new()
 	button_selected = ResourceButton.new()
@@ -34,7 +34,7 @@ func _on_back_pressed():
 	G._get_view_manager().open_view("SingleOrMultiplayer")
 	_close_self()
 
-func change_view_to_create_player():
+func change_view_to_create_player(): ##按钮信号触发
 	G._get_view_manager().open_view("RoleCreate")
 	_close_self()
 
@@ -42,26 +42,25 @@ func _next_view():
 	role_manager.create_player(player_selected)
 	G._get_view_manager().open_view("StartMenu")
 	_close_self()
-	pass
 
-func dir_contents(path:String): ##遍历path文件夹,获取预设贴图
+func _dir_contents(path:String) -> void: ##遍历path文件夹,获取预设贴图
 	var dir = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name:String = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
-				add_item_to_list(players_path+file_name)
+				_add_item_to_list(players_path+file_name)
 			file_name = dir.get_next()
 	else:
 		printerr("访问PlayerData路径时出错,尝试重新建立文件夹目录")
 		dir = DirAccess.open("user://")
 		if dir.make_dir_recursive(path) == OK:
-			dir_contents(path)
+			_dir_contents(path)
 		else:
 			printerr("创建失败")
 
-func add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添加到PlayerList
+func _add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添加到PlayerList
 	var rbutton:ResourceButton = ResourceButton.new()
 	rbutton.resource = ResourceLoader.load(file_name,"PlayerData") as PlayerData
 	if not rbutton.get_resource_name() in role_manager.get_players_name_list():
@@ -71,7 +70,7 @@ func add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添�
 	rbutton._sand_resouce.connect(selected.bind(rbutton))
 	role_list.add_child(rbutton)
 
-func selected(player:PlayerData,button:ResourceButton):
+func selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号触发
 	player_selected = player
 	button_selected = button
 	name_box.text = player.player_name
@@ -83,7 +82,7 @@ func selected(player:PlayerData,button:ResourceButton):
 	Aflash1.play("show_ui")
 	enter_button.show()
 
-func delete_player():
+func delete_player() -> void: ##按钮信号触发
 	var path:String = player_selected.resource_path
 	## TODO 增加删除角色时 的确认步骤
 	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")

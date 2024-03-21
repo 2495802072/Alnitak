@@ -6,6 +6,12 @@ var multi_file:String
 var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
 var world_local_dir_path:String = ProjectSettings.globalize_path("user://Data/world/")
 
+var PLAY_MODE:int = PLAY_MODES.SINGLEPLAYER ##单人游戏或者多人游戏
+enum PLAY_MODES{
+	SINGLEPLAYER,## 单人游戏
+	MULTIPLAYER## 多人游戏
+}
+
 func _init():
 	if OS.has_feature("editor"):
 		# 从编辑器二进制文件运行。
@@ -91,3 +97,6 @@ func has_multi_file() -> bool:
 
 func get_multi_file_path() -> String:
 	return multi_file
+
+func get_play_mode() -> int:
+	return PLAY_MODE
