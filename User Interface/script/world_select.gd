@@ -6,8 +6,12 @@ func _ready():
 	information.hide() ##详细信息默认保持隐藏，选中世界后展开
 	_dir_contents(worldFile_path_local)
 
-func change_view_to_create_world(): ##按钮信号触发
+func _change_view_to_create_world() -> void: ##按钮信号触发
 	G._get_view_manager().open_view("WorldCreate")
+	_close_self()
+
+func _on_back_pressed() -> void:
+	G._get_view_manager().open_view("PlayerSelect")
 	_close_self()
 
 func _dir_contents(path:String) -> void: ##遍历path文件夹,获取资源

@@ -60,4 +60,5 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 
-[connection signal="pressed" from="VSplitContainer/HSplitContainer/WorldList/AddWorld" to="." method="change_view_to_create_world"]
+[connection signal="pressed" from="VSplitContainer/HSplitContainer/WorldList/AddWorld" to="." method="_change_view_to_create_world"]
+[connection signal="pressed" from="VSplitContainer/Back" to="." method="_on_back_pressed"]

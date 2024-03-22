@@ -334,10 +334,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Create"
 
-[connection signal="cfg_be_changed" from="." to="." method="initialize_player_data"]
-[connection signal="data_be_changed" from="." to="." method="update_ui"]
-[connection signal="focus_exited" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="text_focus_exited"]
-[connection signal="text_submitted" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="set_player_name"]
+[connection signal="cfg_be_changed" from="." to="." method="_initialize_player_data"]
+[connection signal="data_be_changed" from="." to="." method="_update_ui"]
+[connection signal="focus_exited" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="_text_focus_exited"]
+[connection signal="text_submitted" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/PlayerName" to="." method="_set_player_name"]
 [connection signal="item_selected" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer2/Difficultes" to="." method="set_difficult"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/Health" to="." method="set_player_num" binds= ["Health"]]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/VSplitContainer/HSplitContainer/NumericalValueBox/HealthUP" to="." method="set_player_num" binds= ["HealthUP"]]

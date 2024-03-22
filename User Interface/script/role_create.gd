@@ -28,33 +28,33 @@ func _enter_tree():
 
 
 func _ready():
-	dir_contents(role_list_path_local)
+	_dir_contents(role_list_path_local)
 	
 	data = PlayerData.new() ## 每次打开该页面只能创建一个角色
 	create_button.hide()
 
 ## 页面初始化过程
-func dir_contents(path:String): ##遍历path文件夹,获取预设贴图
+func _dir_contents(path:String): ##遍历path文件夹,获取预设贴图
 	var dir:DirAccess = DirAccess.open(path)
 	if dir:
 		dir.list_dir_begin()
 		var file_name:String = dir.get_next()
 		while file_name != "":
 			if not dir.current_is_dir():
-				add_item_to_list(role_list_path_local+file_name)
+				_add_item_to_list(role_list_path_local+file_name)
 			file_name = dir.get_next()
 	else:
 		print("尝试访问路径时出错。")
 
-func add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件按着特定的模式添加到RoleList
+func _add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件按着特定的模式添加到RoleList
 	var rbutton:ResourceButton = ResourceButton.new()
 	rbutton.resource = ResourceLoader.load(file_name,"ChartletConfig")
 	rbutton.set_h_size_flags(Control.SIZE_EXPAND_FILL)
-	rbutton._sand_resouce.connect(set_player_config.bind())
+	rbutton._sand_resouce.connect(_set_player_config.bind())
 	%RoleList.add_child(rbutton)
 	pass
 
-func initialize_player_data(): ## 与cfg_be_changed信号直接连接,给新建立的角色data赋予初值
+func _initialize_player_data(): ## 与cfg_be_changed信号直接连接,给新建立的角色data赋予初值
 	data.HP_base = data.config.HP_base
 	data.HP_UP = data.config.HP_UP
 	data.HP_buff = data.config.HP_buff
@@ -67,7 +67,7 @@ func initialize_player_data(): ## 与cfg_be_changed信号直接连接,给新建�
 	create_button.show()
 	data_be_changed.emit()
 
-func update_ui(): ## 与cfg_be_changed信号直接连接,主要用于修改控件的disable属性以及数值的显示
+func _update_ui(): ## 与cfg_be_changed信号直接连接,主要用于修改控件的disable属性以及数值的显示
 	if data.config.resource_name == "GameEngineer": ##特殊角色
 		difficult_button.select(0)
 		difficult_button.disabled = true
@@ -82,7 +82,7 @@ func update_ui(): ## 与cfg_be_changed信号直接连接,主要用于修改控�
 			if item is LineEdit:
 				item.editable = false
 	chartlet.texture = data.config.icon
-	update_lineedits()
+	_update_lineedits()
 
 func set_player_num(new_num:String,type:String):## 设置engineer的各项数值
 	match (type): ##给显示内容赋值
@@ -101,7 +101,7 @@ func set_player_num(new_num:String,type:String):## 设置engineer的各项数值
 		"Bag":
 			data.bag_size = int(new_num)
 
-func update_lineedits():##更新显示的数值
+func _update_lineedits():##更新显示的数值
 	for item in num_box.get_children():
 			if item is LineEdit:
 				match (item.name): ##给显示内容赋值
@@ -121,22 +121,22 @@ func update_lineedits():##更新显示的数值
 						item.text = str(data.bag_size)
 
 ## 以下是玩家建立过程
-func set_player_name(s:String) -> void: ##按下Enter设置玩家名称
+func _set_player_name(s:String) -> void: ##按下Enter设置玩家名称
 	data.player_name = s
 	data.resource_name = s
 	create_button.grab_focus()
 
-func text_focus_exited(): ## 文本框失焦设置玩家名称
-	set_player_name(player_name_textbox.text)
+func _text_focus_exited(): ## 文本框失焦设置玩家名称
+	_set_player_name(player_name_textbox.text)
 
-func add_to_player_bag(item) -> void: ## 添加物品至玩家物品栏
+func _add_to_player_bag(item) -> void: ## 添加物品至玩家物品栏
 	pass
 
-func set_player_config(cfg:ChartletConfig) -> void: ##设置玩家的贴图资源
+func _set_player_config(cfg:ChartletConfig) -> void: ##设置玩家的贴图资源
 	data.config = cfg
 	cfg_be_changed.emit()
 
-func set_difficult(_index:int = 0) -> void: ##设置玩家难度
+func _set_difficult(_index:int = 0) -> void: ##设置玩家难度
 	data.difficult = difficult_button.get_selected_id()
 
 ## UI操作
@@ -149,7 +149,7 @@ func _on_create_pressed() -> void:
 				player_name_textbox.set_placeholder("name be used,write again different")
 				player_name_textbox.grab_focus()
 			else:
-				set_difficult()
+				_set_difficult()
 				data.save_as_player()
 				_turn_back()
 		else:
