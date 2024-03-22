@@ -34,7 +34,7 @@ func _on_back_pressed():
 	G._get_view_manager().open_view("SingleOrMultiplayer")
 	_close_self()
 
-func change_view_to_create_player(): ##按钮信号触发
+func _change_view_to_create_player(): ##按钮信号触发
 	G._get_view_manager().open_view("RoleCreate")
 	_close_self()
 
@@ -67,10 +67,10 @@ func _add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添
 		role_manager.add_player_name_to_list(rbutton.get_resource_name()) ## 添加已经使用的名字
 	rbutton.set_h_size_flags(Control.SIZE_SHRINK_CENTER)
 	rbutton.custom_minimum_size = Vector2(250,250)
-	rbutton._sand_resouce.connect(selected.bind(rbutton))
+	rbutton._sand_resouce.connect(_selected.bind(rbutton))
 	role_list.add_child(rbutton)
 
-func selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号触发
+func _selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号触发
 	player_selected = player
 	button_selected = button
 	name_box.text = player.player_name
@@ -82,7 +82,7 @@ func selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号�
 	Aflash1.play("show_ui")
 	enter_button.show()
 
-func delete_player() -> void: ##按钮信号触发
+func _delete_player() -> void: ##按钮信号触发
 	var path:String = player_selected.resource_path
 	## TODO 增加删除角色时 的确认步骤
 	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")

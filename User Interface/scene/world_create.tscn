@@ -10,3 +10,82 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ngw8f")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(1000, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Name" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Seed" type="Label" parent="VBoxContainer/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+text = "Seed:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HboxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="difficult" type="Button" parent="VBoxContainer/HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "difficult:easy"
+
+[node name="enemy" type="Button" parent="VBoxContainer/HboxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "enemy theme"
+
+[node name="block" type="Button" parent="VBoxContainer/HboxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+text = "block theme"
+
+[node name="CreateMode" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "create mode"
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="Back" type="Button" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"
+
+[node name="Create" type="Button" parent="VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Create"
