@@ -39,6 +39,8 @@ dragger_visibility = 1
 custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 size_flags_horizontal = 2
+collapsed = true
+dragger_visibility = 1
 
 [node name="WorldList" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/WorldList"]
 layout_mode = 2
@@ -47,12 +49,75 @@ size_flags_vertical = 0
 [node name="AddWorld" type="Button" parent="VSplitContainer/HSplitContainer/WorldList"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "新建世界"
+text = "create new world"
 
 [node name="DetailedInformation" type="Control" parent="VSplitContainer/HSplitContainer"]
 custom_minimum_size = Vector2(400, 500)
 layout_mode = 2
 size_flags_horizontal = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VSplitContainer/HSplitContainer/DetailedInformation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="WorldNameBox" type="LineEdit" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+editable = false
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 1
+
+[node name="SeedLabel" type="Label" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "seed:"
+
+[node name="SeedBox" type="Label" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer"]
+layout_mode = 2
+text = "(null)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSplitContainer2" type="HSplitContainer" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 1
+
+[node name="DifficultLabel" type="Label" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "difficult:"
+
+[node name="DifficultBox" type="Label" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer2"]
+layout_mode = 2
+text = "(null)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSplitContainer3" type="HSplitContainer" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+collapsed = true
+dragger_visibility = 1
+
+[node name="Delete" type="Button" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Delete"
+
+[node name="Enter" type="Button" parent="VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Enter"
 
 [node name="Back" type="Button" parent="VSplitContainer"]
 custom_minimum_size = Vector2(240, 0)

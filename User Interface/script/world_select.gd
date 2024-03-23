@@ -1,6 +1,13 @@
 extends BaseGUIView
 @onready var worldFile_path_local:String = G._get_world_local_dir_path()
 @onready var information:Control = $VSplitContainer/HSplitContainer/DetailedInformation as Control
+@onready var world_list:VBoxContainer = $VSplitContainer/HSplitContainer/WorldList/WorldList as VBoxContainer
+@onready var world_name_box:LineEdit = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/WorldNameBox as LineEdit
+@onready var seed_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer/SeedBox as Label
+@onready var difficult_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer2/DifficultBox as Label
+
+var select_world:WorldData
+var select_button:ResourceButton
 
 func _ready():
 	information.hide() ##详细信息默认保持隐藏，选中世界后展开
@@ -31,5 +38,17 @@ func _dir_contents(path:String) -> void: ##遍历path文件夹,获取资源
 		else:
 			printerr("创建失败")
 
-func _add_item_to_list(path:String) -> void: ## 给worldList添加内容
+func _add_item_to_list(file_name:String) -> void: ## 给worldList添加内容
+	var rbutton:ResourceButton = ResourceButton.new()
+	rbutton.resource = ResourceLoader.load(file_name,"WorldData") as WorldData
+	rbutton.sand_resouce.connect(_selected.bind(rbutton))
+	world_list.add_child(rbutton)
+
+func _selected(world:WorldData,button:ResourceButton) -> void:
+	select_world = world
+	select_button = button
+	world_name_box.text = button.get_resource_name()
+	seed_box.text = str(world.world_seed)
+	difficult_box.text = str(WorldData.DIFFICULTIES.find_key(world.difficult))
+	information.show()
 	pass

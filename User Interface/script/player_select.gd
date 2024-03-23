@@ -66,7 +66,7 @@ func _add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件添
 		role_manager.add_player_name_to_list(rbutton.get_resource_name()) ## 添加已经使用的名字
 	rbutton.set_h_size_flags(Control.SIZE_SHRINK_CENTER)
 	rbutton.custom_minimum_size = Vector2(250,250)
-	rbutton._sand_resouce.connect(_selected.bind(rbutton))
+	rbutton.sand_resouce.connect(_selected.bind(rbutton))
 	role_list.add_child(rbutton)
 
 func _selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号触发

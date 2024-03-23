@@ -50,7 +50,7 @@ func _add_item_to_list(file_name:String) -> void: ## 把文件夹内的文件按
 	var rbutton:ResourceButton = ResourceButton.new()
 	rbutton.resource = ResourceLoader.load(file_name,"ChartletConfig")
 	rbutton.set_h_size_flags(Control.SIZE_EXPAND_FILL)
-	rbutton._sand_resouce.connect(_set_player_config.bind())
+	rbutton.sand_resouce.connect(_set_player_config.bind())
 	%RoleList.add_child(rbutton)
 	pass
 
