@@ -30,8 +30,8 @@ collapsed = true
 dragger_visibility = 1
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VSplitContainer"]
-custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 collapsed = true
 dragger_visibility = 1
 

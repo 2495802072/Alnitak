@@ -37,7 +37,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "Name:"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
+[node name="WorldName" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -49,7 +49,7 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "Seed:"
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer2"]
+[node name="WorldSeed" type="LineEdit" parent="VBoxContainer/HSplitContainer/HSplitContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -89,3 +89,9 @@ text = "Back"
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Create"
+
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/HSplitContainer/WorldName" to="." method="_on_world_name_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/HSplitContainer/HSplitContainer2/WorldSeed" to="." method="_on_world_seed_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HboxContainer/difficult" to="." method="_on_difficult_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer2/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer2/Create" to="." method="_on_create_pressed"]
