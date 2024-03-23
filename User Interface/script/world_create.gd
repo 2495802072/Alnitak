@@ -10,11 +10,12 @@ var data:WorldData
 func _ready():
 	data = WorldData.new()
 
-func _on_world_name_text_changed(new_text:String) -> void:
-	data.world_name = new_text
+func _on_world_name_text_changed(new_name:String) -> void: ##设置世界名称
+	data.world_name = new_name
+	data.resource_name = new_name
 
-func _on_world_seed_text_changed(new_text:String) -> void:
-	data.seed = int(new_text)
+func _on_world_seed_text_changed(new_text:String) -> void: ##设置世界种子
+	data.world_seed = int(new_text)
 
 func _on_back_pressed() -> void:
 	G._get_view_manager().open_view("WorldSelect")
@@ -26,16 +27,17 @@ func _on_create_pressed() -> void:
 	elif world_seed.text == "":
 		world_seed.grab_focus()
 	else:
+		data.save_as_world()
 		_on_back_pressed()
 
 func _on_difficult_pressed() -> void: ##修改世界难度
 	match (difficult.text):
 		"difficult:easy":
 			difficult.text = "difficult:normal"
-			data.difficult = WorldManager.DIFFICULTIES.NORMAL
+			data.difficult = WorldData.DIFFICULTIES.NORMAL
 		"difficult:normal":
 			difficult.text = "difficult:difficult"
-			data.difficult = WorldManager.DIFFICULTIES.DIFFICULT
+			data.difficult = WorldData.DIFFICULTIES.DIFFICULT
 		"difficult:difficult":
 			difficult.text = "difficult:easy"
-			data.difficult = WorldManager.DIFFICULTIES.EASY
+			data.difficult = WorldData.DIFFICULTIES.EASY
