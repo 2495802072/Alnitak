@@ -20,3 +20,13 @@ func save_as_world() -> void: ## 文件另存为，更改文件名时使用，�
 
 func _rename() -> void:
 	pass
+
+func _generate_area_block(id:Vector2i):
+	var noise = FastNoiseLite.new()
+	noise.set_seed(world_seed)
+	for x in range(0,16):
+		for y in range(0,16):
+			var f:float = noise.get_noise_2dv(id*16+Vector2i(x,y))
+			var z:int = f*10000
+	var t:int = tile_set.size
+	return t

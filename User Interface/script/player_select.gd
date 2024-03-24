@@ -83,14 +83,13 @@ func _selected(player:PlayerData,button:ResourceButton) -> void: ##按钮信号�
 
 func _delete_player() -> void: ##按钮信号触发
 	var path:String = player_selected.resource_path
-	## TODO 增加删除角色时 的确认步骤
 	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")
 	if f: #确认删除
 		if OS.has_feature("editor"):
 			DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
 		else:
 			DirAccess.remove_absolute(OS.get_executable_path().get_base_dir().path_join(path))
-		role_manager.reset_players_name_list()
+		role_manager.reset_players_name_list() ## 重置 玩家-已用名称库
 		# 重启当前页面
 		_close_self()
 		G._get_view_manager().open_view("RoleSelect")
