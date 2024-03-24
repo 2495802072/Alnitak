@@ -4,7 +4,7 @@ class_name RoleManager extends Node
 var player_name_list:Array[String] = [] ## 储存玩家昵称列表，防止重名以及防止重复加载
 @export var player_root:Node2D ## 编译器属性直接赋值
 @export var other_role_root:Node2D## 编译器属性直接赋值
-@export var player_sence:PackedScene
+@export var player_sence:PackedScene ## 编译器属性直接赋值
 
 var static_role_list:Array = [] ##受世界决定，由[method _build_role_list]函数实现
 
@@ -18,11 +18,16 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 	var player:Node2D = player_sence.instantiate()
 	player.data = player_data
 	player.name = player_data.player_name
-	add_player(player)
+	if G._get_world_manager().has_world():
+		add_player(player)
+	else:
+		await G._get_world_manager().world_ready
+		add_player(player)
 
 func add_player(player:Node2D): ## 添加玩家
 	player.instance_id = _get_role_instance_index()
 	_add_to_role_instance_list(player)
+	player.position = G._get_world_manager().get_world_data_now().player_borth_position
 	player_root.add_child(player)
 
 func _get_role_instance_index() -> int: ##获取role固定编号

@@ -28,6 +28,9 @@ func _on_create_pressed() -> void:
 		world_seed.grab_focus()
 	else:
 		data.save_as_world()
+		
+		data.player_borth_position = Vector2i(7,7)
+		
 		_on_back_pressed()
 
 func _on_difficult_pressed() -> void: ##修改世界难度

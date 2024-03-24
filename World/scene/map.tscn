@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dn67soop63xjn"]
 
-[ext_resource type="TileSet" uid="uid://bxkybvuj8ckbt" path="res://Asset/WorldResource/TileSet/Blocks1.tres" id="1_6bhqw"]
+[ext_resource type="TileSet" uid="uid://dqc4nusj2l1k1" path="res://Asset/WorldResource/TileSet/Blocks2.tres" id="1_kodci"]
 [ext_resource type="Script" path="res://World/script/game_map.gd" id="2_6bfes"]
 
 [node name="GameMap" type="TileMap"]
-tile_set = ExtResource("1_6bhqw")
-collision_visibility_mode = 1
+tile_set = ExtResource("1_kodci")
 format = 2
+layer_0/name = "土块"
 script = ExtResource("2_6bfes")
