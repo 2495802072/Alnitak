@@ -6,6 +6,7 @@ extends BaseGUIView
 @onready var seed_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer/SeedBox as Label
 @onready var difficult_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer2/DifficultBox as Label
 
+
 var select_world:WorldData
 var select_button:ResourceButton
 
@@ -51,4 +52,18 @@ func _selected(world:WorldData,button:ResourceButton) -> void:
 	seed_box.text = str(world.world_seed)
 	difficult_box.text = str(WorldData.DIFFICULTIES.find_key(world.difficult))
 	information.show()
+	
+	print(world._generate_area_block(Vector2(1,3)))
+	pass
+
+func _on_delete_pressed(): ##删除世界
+	var path:String = select_world.resource_path
+	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")
+	if f: 
+		if OS.has_feature("editor"): ## 判断是否是编辑器运行,移除文件
+			DirAccess.remove_absolute(ProjectSettings.globalize_path(path))
+		else:
+			DirAccess.remove_absolute(OS.get_executable_path().get_base_dir().path_join(path))
+		_close_self() ## 自我重启
+		G._get_view_manager().open_view("WorldSelect")
 	pass
