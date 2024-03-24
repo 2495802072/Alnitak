@@ -5,10 +5,10 @@ extends BaseGUIView
 @onready var world_name_box:LineEdit = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/WorldNameBox as LineEdit
 @onready var seed_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer/SeedBox as Label
 @onready var difficult_box:Label = $VSplitContainer/HSplitContainer/DetailedInformation/VBoxContainer/HSplitContainer2/DifficultBox as Label
+@onready var manager:WorldManager = G._get_world_manager() as WorldManager
 
-
-var select_world:WorldData
-var select_button:ResourceButton
+var world_selected:WorldData
+var button_selected:ResourceButton
 
 func _ready():
 	information.hide() ##详细信息默认保持隐藏，选中世界后展开
@@ -46,18 +46,16 @@ func _add_item_to_list(file_name:String) -> void: ## 给worldList添加内容
 	world_list.add_child(rbutton)
 
 func _selected(world:WorldData,button:ResourceButton) -> void:
-	select_world = world
-	select_button = button
+	world_selected = world
+	button_selected = button
 	world_name_box.text = button.get_resource_name()
 	seed_box.text = str(world.world_seed)
 	difficult_box.text = str(WorldData.DIFFICULTIES.find_key(world.difficult))
 	information.show()
-	
-	print(world._generate_area_block(Vector2(1,3)))
 	pass
 
 func _on_delete_pressed(): ##删除世界
-	var path:String = select_world.resource_path
+	var path:String = world_selected.resource_path
 	var f:bool = await G._get_view_manager().jump_alert("删除后无法恢复，是否确认删除？")
 	if f: 
 		if OS.has_feature("editor"): ## 判断是否是编辑器运行,移除文件
@@ -67,3 +65,8 @@ func _on_delete_pressed(): ##删除世界
 		_close_self() ## 自我重启
 		G._get_view_manager().open_view("WorldSelect")
 	pass
+
+
+func _on_enter_pressed():
+	manager.create_world(world_selected)
+	_close_self()
