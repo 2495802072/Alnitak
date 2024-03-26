@@ -18,16 +18,21 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 	var player:Node2D = player_sence.instantiate()
 	player.data = player_data
 	player.name = player_data.player_name
-	if G._get_world_manager().has_world():
+	if G._get_world_manager().world_had_completed():
 		add_player(player)
 	else:
 		await G._get_world_manager().world_ready
 		add_player(player)
+	G.game_entered.emit() ##到这里，已经完全进入游戏（脱离菜单页面）
+	
+	G._get_palyer_camera().player = player ##设置相机跟随对象
+	G._get_palyer_camera().focal_player()
+	G._get_palyer_camera().change_mode_to(1)
 
 func add_player(player:Node2D): ## 添加玩家
 	player.instance_id = _get_role_instance_index()
+	player.position = G._get_world_manager().load_player_position(player.data.get("UID")) ##找到玩家在地图内的坐标
 	_add_to_role_instance_list(player)
-	player.position = G._get_world_manager().get_world_data_now().player_borth_position
 	player_root.add_child(player)
 
 func _get_role_instance_index() -> int: ##获取role固定编号
@@ -56,9 +61,11 @@ func get_player_root() -> Node2D: ## 获取玩家根节点
 func get_other_role_root() -> Node2D: ## 获取其他角色根节点
 	return other_role_root
 
-func remove_player(instance_index:int): ## 玩家退出时，移除玩家(触发此函数前已保存)
+func remove_player(instance_index:int): ## 玩家退出时，坐标数据存到地图数据里
 	var player_to_leave:Node2D = _get_node_by_instance_id(instance_index)
+	G._get_world_manager().save_player_position(player_to_leave.data.get("UID"),player_to_leave.position)
 	role_instance_list.erase(instance_index)
+	G._get_palyer_camera().player_exit()
 	player_to_leave.queue_free()
 
 #TODO

@@ -3,6 +3,7 @@ extends BaseGUIView
 func _open():
 	_hide_others()
 	$HSplitContainer/Panel2/TabContainer.current_tab = 0
+	$HSplitContainer/Panel2.hide()
 	
 	if not G._get_view_manager().has_language:
 		_turn_to_language()
@@ -21,3 +22,6 @@ func _turn_to_language():
 
 func _buttom_hover_voice(_flag:bool = true):
 	$ButtomHoverVoice.play(0.03)
+
+func selected() -> void:
+	$HSplitContainer/Panel2.show()

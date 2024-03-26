@@ -150,6 +150,7 @@ func _on_create_pressed() -> void:
 				player_name_textbox.grab_focus()
 			else:
 				_set_difficult()
+				data.set("UID",str(OS.get_unique_id())+"-"+str(Time.get_unix_time_from_system())) ##生成唯一标识符（系统UID+时间戳UID）
 				data.save_as_player()
 				_turn_back()
 		else:

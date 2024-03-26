@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://gjetvy86hfig"]
+[gd_scene load_steps=28 format=3 uid="uid://gjetvy86hfig"]
 
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_manager.gd" id="1_ech5f"]
 [ext_resource type="Script" path="res://User Interface/script/Core/gui_config.gd" id="2_4ouet"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bwrpfird7e0pi" path="res://User Interface/scene/world_select.tscn" id="11_43qaf"]
 [ext_resource type="PackedScene" uid="uid://drluxa2i8lrow" path="res://User Interface/scene/world_create.tscn" id="12_dk0v6"]
 [ext_resource type="PackedScene" uid="uid://dn67soop63xjn" path="res://World/scene/map.tscn" id="16_m5n7s"]
+[ext_resource type="Script" path="res://Game/script/player_camera.gd" id="17_2l8h4"]
 
 [sub_resource type="Resource" id="Resource_7mtms"]
 script = ExtResource("2_4ouet")
@@ -96,7 +97,9 @@ world_sence = ExtResource("16_m5n7s")
 
 [node name="WorldRoot" type="Node2D" parent="GamingBox"]
 
-[node name="Camera2D" type="Camera2D" parent="GamingBox"]
+[node name="PlayerCamera" type="Camera2D" parent="GamingBox"]
+unique_name_in_owner = true
+script = ExtResource("17_2l8h4")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

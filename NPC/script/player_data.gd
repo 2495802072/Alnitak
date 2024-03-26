@@ -6,8 +6,8 @@ class_name PlayerData extends RoleBase
 @export var bag_size:int = 10 ##玩家背包大小
 @export var player_bag:Array[int] ##存储玩家背包数据
 @export var difficult := RoleBase.DIFFICULT_PLAYER.EASY ##玩家难度
+@export var UID:String ##玩家唯一标识符(用于地图存储玩家数据）
 
-@export var player_position:Vector2 = Vector2.ZERO ##默认坐标(0,0)
 
 func save_as_player() -> void: ## 文件另存为，更改文件名时使用，一般情况可以直接使用["NPC/script/player.gd"]的 _save_file() 方法
 	var dir:String = G._get_player_local_dir_path()

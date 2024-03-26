@@ -13,7 +13,6 @@ func _ready():
 	if data and data.config:
 		animated_sprite.set_sprite_frames(data.config.sprit_frames)
 		collision_shape.set_shape(data.config.collision_shape)
-		position = data.player_position
 	else:
 		printerr("角色模型获取失败")
 
@@ -38,7 +37,6 @@ func attack() -> void: ##施加伤害
 	pass
 
 func save_file() -> void: ## 正常保存，使用资源自带路径，重命名请使用[method PlayerData.save_as_player]
-	data.player_position = position
 	ResourceSaver.save(data)
 
 func remove_self() -> void:

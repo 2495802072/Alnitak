@@ -1,5 +1,8 @@
 extends Node
 
+signal game_entered() ##完全进入游戏后触发
+signal game_exited() ##从游戏中退出触发
+
 var override_file:String 
 var language_file:String 
 var multi_file:String
@@ -52,7 +55,7 @@ func _get_world_local_dir_path() -> String:
 	return world_local_dir_path
 
 func _get_view_manager() -> GUIViewManager:
-	var manager =  _get_game_root().get_node_or_null("%GUIViewManager")
+	var manager:GUIViewManager =  _get_game_root().get_node_or_null("%GUIViewManager")
 	if manager:
 		return manager
 	else:
@@ -77,7 +80,7 @@ func _save_language(lang:String):
 	pass
 
 func _get_role_manager() -> RoleManager:
-	var manager =  _get_game_root().get_node_or_null("%RoleManager")
+	var manager:RoleManager =  _get_game_root().get_node_or_null("%RoleManager")
 	if manager :
 		return manager
 	else:
@@ -85,13 +88,20 @@ func _get_role_manager() -> RoleManager:
 		return
 
 func _get_world_manager() -> WorldManager:
-	var manager =  _get_game_root().get_node_or_null("%WorldManager")
+	var manager:WorldManager =  _get_game_root().get_node_or_null("%WorldManager")
 	if manager :
 		return manager
 	else:
 		print("can not find manager")
 		return
 
+func _get_palyer_camera() -> Camera2D:
+	var player_camera:Camera2D = _get_game_root().get_node_or_null("%PlayerCamera")
+	if player_camera:
+		return player_camera
+	else:
+		print("can not find camera")
+		return
 func has_multi_file() -> bool:
 	return FileAccess.file_exists(multi_file)
 

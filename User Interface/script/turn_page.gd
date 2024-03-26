@@ -4,4 +4,4 @@ extends Button
 
 func _pressed():
 	$"../../../Panel2/TabContainer".current_tab = page
-	pass
+	$"../../../..".selected()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bcnrrcnj2hs5d"]
+[gd_scene load_steps=27 format=3 uid="uid://bcnrrcnj2hs5d"]
 
 [ext_resource type="Theme" uid="uid://duqh8hbo60utg" path="res://User Interface/GUI Theme/option_menu.tres" id="1_awp53"]
 [ext_resource type="Script" path="res://User Interface/script/turn_page.gd" id="2_4t6ib"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://User Interface/script/full_screen.gd" id="4_2rvvi"]
 [ext_resource type="Script" path="res://addons/custom_nodes/nodes/bind_button.gd" id="4_5j5og"]
 [ext_resource type="Script" path="res://User Interface/script/audio_slider.gd" id="4_w51vx"]
+[ext_resource type="Script" path="res://User Interface/script/camera_smoothing_speed_slider.gd" id="4_xpky0"]
 [ext_resource type="Texture2D" uid="uid://cmrsto4n85bge" path="res://User Interface/asset/picture/reset.svg" id="5_8pcqt"]
 [ext_resource type="Script" path="res://User Interface/script/Vsync.gd" id="5_ybovc"]
 [ext_resource type="Script" path="res://User Interface/script/reset.gd" id="6_4a43j"]
@@ -97,8 +98,9 @@ split_offset = 1000
 collapsed = true
 
 [node name="Panel" type="Panel" parent="HSplitContainer"]
+custom_minimum_size = Vector2(426, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 0
 size_flags_stretch_ratio = 3.0
 theme = ExtResource("1_awp53")
 
@@ -156,8 +158,9 @@ theme = ExtResource("1_awp53")
 text = "Back"
 
 [node name="Panel2" type="Panel" parent="HSplitContainer"]
+custom_minimum_size = Vector2(1194, 0)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 8
 size_flags_stretch_ratio = 7.0
 theme = ExtResource("1_awp53")
 
@@ -168,11 +171,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
 tabs_visible = false
 
 [node name="GameSettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
-visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 
@@ -210,49 +211,22 @@ collapsed = true
 [node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+tooltip_text = "high -> slow"
+mouse_filter = 0
 theme = ExtResource("1_awp53")
-text = "条目2"
+text = "相机平滑(此页未完成）"
 
-[node name="OptionButton" type="OptionButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
+[node name="OptionButton" type="HSlider" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_awp53")
-
-[node name="HSplitContainer2" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
-collapsed = true
-
-[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
-text = "条目2"
-
-[node name="CheckButton" type="CheckButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer2"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
-
-[node name="HSplitContainer3" type="HSplitContainer" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
-collapsed = true
-
-[node name="Label" type="Label" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
-text = "条目2"
-
-[node name="CheckButton" type="CheckButton" parent="HSplitContainer/Panel2/TabContainer/GameSettingPage/MarginContainer/VBoxContainer/HSplitContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("1_awp53")
+max_value = 15.0
+value = 5.0
+tick_count = 16
+script = ExtResource("4_xpky0")
 
 [node name="DisplaySettingPage" type="ScrollContainer" parent="HSplitContainer/Panel2/TabContainer"]
+visible = false
 layout_mode = 2
 theme = ExtResource("1_awp53")
 

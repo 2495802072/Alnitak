@@ -48,9 +48,10 @@ func _add_item_to_list(file_name:String) -> void: ## 给worldList添加内容
 func _selected(world:WorldData,button:ResourceButton) -> void:
 	world_selected = world
 	button_selected = button
-	world_name_box.text = button.get_resource_name()
-	seed_box.text = str(world.world_seed)
-	difficult_box.text = str(WorldData.DIFFICULTIES.find_key(world.difficult))
+	if button.resource:
+		world_name_box.text = button.get_resource_name()
+		seed_box.text = str(world.world_seed)
+		difficult_box.text = str(WorldData.DIFFICULTIES.find_key(world.difficult))
 	information.show()
 	pass
 
