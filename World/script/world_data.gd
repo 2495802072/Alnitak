@@ -30,8 +30,8 @@ func _create_blocks_array(area_id:Vector2i) -> Array[Vector2i]: ##返回区块�
 	var noise2:FastNoiseLite = FastNoiseLite.new()
 	noise1.set_seed(world_seed)
 	noise2.set_seed(world_seed-1)
-	for x in range(0,16):
-		for y in range(0,16):
+	for x in range(0,17): ##区块范围16*16
+		for y in range(0,17):
 			var local_vector:Vector2i = area_id*16+Vector2i(x,y) ## 通过比较噪声的平方大小决定图格的去留
 			if noise1.get_noise_2dv(local_vector)*noise1.get_noise_2dv(local_vector) < noise2.get_noise_2dv(local_vector)*noise2.get_noise_2dv(local_vector):
 				array.append(local_vector)

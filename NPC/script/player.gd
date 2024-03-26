@@ -17,10 +17,10 @@ func _ready():
 		printerr("角色模型获取失败")
 
 func _physics_process(delta):## 跳跃代码未加
-	#if not is_on_floor():
-		#velocity.y += gravity * delta
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-		#velocity.y = data.jump_velocity
+	if not is_on_floor():
+		velocity.y += gravity * delta
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = data.jump_velocity
 	
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:

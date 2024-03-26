@@ -68,6 +68,20 @@ func remove_player(instance_index:int): ## 玩家退出时，坐标数据存到�
 	G._get_palyer_camera().player_exit()
 	player_to_leave.queue_free()
 
+func get_player_positions() -> Array[Vector2]: ##返回所有玩家的坐标数据
+	var array:Array[Vector2] = []
+	for player in player_root.get_children():
+		var pos = player.position
+		array.append(pos)
+	return array
+
+func count_player_velocity() -> Vector2:
+	var v_sum:Vector2 = Vector2.ZERO
+	for player in player_root.get_children():
+		var v:Vector2 = player.velocity
+		v_sum += v
+	return v_sum
+
 #TODO
 
 func _build_role_list() -> void: ## 每个世界存在自定义的role种类，但是统一由[RoleManager]管理，此函数用于给[RoleManager]建立列表

@@ -8,3 +8,7 @@ tile_set = ExtResource("1_kodci")
 format = 2
 layer_0/name = "土块"
 script = ExtResource("2_6bfes")
+
+[connection signal="player_chunk_changed" from="." to="." method="_on_player_chunk_changed"]
+[connection signal="player_enter_chunk" from="." to="." method="_on_player_enter_chunk"]
+[connection signal="player_leave_chunk" from="." to="." method="_on_player_leave_chunk"]
