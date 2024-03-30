@@ -10,19 +10,23 @@ signal player_chunk_changed(player_index:int,leave_chunk:Vector2i,enter_chunk:Ve
 var player_chunks:Dictionary = {}#单人模式只有一个
 var world_name:String
 
+var load_chunk_radius:Vector2i = Vector2i(5,4) ## 区块加载半径(斜对角线的一半)
 var left_up_chunk_id:Vector2i ##加载区块范围左上角
 var right_down_chunk_id:Vector2i ##加载区块范围右下角
+
+var instance_blocks:Array[Vector2i] = []  ##已经生成的区块列表
 
 func _ready():
 	if data:
 		world_name = data.world_name
 		name = data.world_name
 	var player_chunk:Vector2i = get_chunk_id(data.player_borth_position)
-	left_up_chunk_id = player_chunk + Vector2i(-5,-4) ## TODO 当前加载区块范围为固定值，建议之后修改为随摄像机变化
-	right_down_chunk_id = player_chunk + Vector2i(4,3)
+	left_up_chunk_id = player_chunk - load_chunk_radius ## TODO 当前加载区块范围为固定值，建议之后修改为随摄像机变化
+	right_down_chunk_id = player_chunk + load_chunk_radius + Vector2i.ONE
 	for chunk_x in range(left_up_chunk_id.x,right_down_chunk_id.x+1):
 		for chunk_y in range(left_up_chunk_id.y,right_down_chunk_id.y+1):
 			var chunk = Vector2i(chunk_x,chunk_y)
+			instance_blocks.append(chunk)
 			generate_world_chunk(chunk) ## 玩家出生地区块s生成
 	pass
 
@@ -53,12 +57,16 @@ func generate_world_chunk(chunk_id:Vector2i) ->void: #从data生成区块
 	if data.chunks.has(chunk_id):
 		#print("已知区块")
 		var area:AreaBlock = data.chunks[chunk_id] as AreaBlock
-		set_cells_terrain_connect(area.block_layer,area.block_cells,area.block_terrain_set,area.block_terrain)
+		set_cells_terrain_connect(area.block_layer,Array(area.block_cells),area.block_terrain_set,area.block_terrain)
 	else:
 		#print("生成新区块")
 		var array = data._create_blocks_array(chunk_id)
 		set_cells_terrain_connect(0,array,0,0)
 	_save_map_data()
+
+func earse_world_chunk(chunk_id:Vector2i) -> void: ##卸载区块
+	
+	pass
 
 func save_player_position_to_map(player_uid:String,pos_local:Vector2) -> void:
 	var pos_map:Vector2i = local_to_map(pos_local)
@@ -83,5 +91,24 @@ func _on_player_enter_chunk(index:int,chunk_id:Vector2i) -> void:
 	player_chunks[index] = chunk_id
 	print("玩家"+str(index)+"进入区块"+str(chunk_id))
 
-func _on_player_chunk_changed(player_index, leave_chunk, enter_chunk) -> void:
-	pass # Replace with function body.
+func _on_player_chunk_changed(player_index:int, leave_chunk:Vector2i, enter_chunk:Vector2i) -> void:
+	var new_chunk_array:Array[Vector2i] = []
+	##计算新的加载范围
+	left_up_chunk_id = enter_chunk - load_chunk_radius
+	right_down_chunk_id = enter_chunk + load_chunk_radius + Vector2i.ONE
+	
+	##计算新的范围的区块更新
+	for chunk_x:int in range(left_up_chunk_id.x,right_down_chunk_id.x+1):
+		for chunk_y:int in range(left_up_chunk_id.y,right_down_chunk_id.y+1):
+			var chunk:Vector2i = Vector2i(chunk_x,chunk_y)
+			if chunk not in instance_blocks: ##该区块未在加载区块中，加载
+				generate_world_chunk(chunk)
+			new_chunk_array.append(chunk)
+	
+	var remove_blocks:Array[Vector2i] = []
+	for chunk:Vector2i in instance_blocks:
+		if chunk not in new_chunk_array:
+			earse_world_chunk(chunk)
+			instance_blocks.erase(chunk)
+			remove_blocks.append(chunk)
+	
