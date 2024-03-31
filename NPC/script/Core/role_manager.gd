@@ -18,11 +18,9 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 	var player:Node2D = player_sence.instantiate()
 	player.data = player_data
 	player.name = player_data.player_name
-	if G._get_world_manager().world_had_completed():
-		add_player(player)
-	else:
-		await G._get_world_manager().world_ready
-		add_player(player)
+	
+	await G._get_world_manager().world_ready
+	add_player(player)
 	G.game_entered.emit() ##到这里，已经完全进入游戏（脱离菜单页面）
 	
 	G._get_palyer_camera().player = player ##设置相机跟随对象
@@ -31,9 +29,10 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 
 func add_player(player:Node2D): ## 添加玩家
 	player.instance_id = _get_role_instance_index()
-	player.position = G._get_world_manager().load_player_position(player.data.get("UID")) ##找到玩家在地图内的坐标
+	player.position = G._get_world_manager().get_player_position(player.data.get("UID")) ##找到玩家在地图内的坐标
 	_add_to_role_instance_list(player)
 	player_root.add_child(player)
+	G._get_world_manager()._update_players_position() ##玩家加入后，更新地图存储的玩家坐标
 
 func _get_role_instance_index() -> int: ##获取role固定编号
 	var i:int = role_instance_index
@@ -63,19 +62,20 @@ func get_other_role_root() -> Node2D: ## 获取其他角色根节点
 
 func remove_player(instance_index:int): ## 玩家退出时，坐标数据存到地图数据里
 	var player_to_leave:Node2D = _get_node_by_instance_id(instance_index)
-	G._get_world_manager().save_player_position(player_to_leave.data.get("UID"),player_to_leave.position)
+	G._get_world_manager()._update_players_position()
 	role_instance_list.erase(instance_index)
 	G._get_palyer_camera().player_exit()
 	player_to_leave.queue_free()
 
-func get_player_positions() -> Array[Vector2]: ##返回所有玩家的坐标数据
-	var array:Array[Vector2] = []
+func get_player_positions() -> Dictionary: ##返回所有玩家的坐标数据
+	var dic:Dictionary = {}
 	for player in player_root.get_children():
-		var pos = player.position
-		array.append(pos)
-	return array
+		var pos:Vector2 = player.position
+		var uid:String = player.data.UID
+		dic[uid] = pos
+	return dic
 
-func count_player_velocity() -> Vector2:
+func count_player_velocity() -> Vector2: ##统计玩家速度总和，静默时减少内存消耗
 	var v_sum:Vector2 = Vector2.ZERO
 	for player in player_root.get_children():
 		var v:Vector2 = player.velocity

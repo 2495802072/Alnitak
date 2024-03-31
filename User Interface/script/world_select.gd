@@ -69,5 +69,5 @@ func _on_delete_pressed(): ##删除世界
 
 
 func _on_enter_pressed():
-	manager.create_world(world_selected)
+	manager._init_data(world_selected)
 	_close_self()
