@@ -19,7 +19,7 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 	player.data = player_data
 	player.name = player_data.player_name
 	
-	await G._get_world_manager().world_ready
+	await G._get_world_manager().world_ready ## 角色选择结束需要暂停
 	add_player(player)
 	G.game_entered.emit() ##到这里，已经完全进入游戏（脱离菜单页面）
 	
