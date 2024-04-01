@@ -8,6 +8,7 @@ extends BaseGUIView
 var data:WorldData
 
 func _ready():
+	
 	data = WorldData.new()
 
 func _on_world_name_text_changed(new_name:String) -> void: ##设置世界名称

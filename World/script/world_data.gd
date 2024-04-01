@@ -3,9 +3,8 @@ class_name WorldData extends Resource
 @export var world_name:String
 @export var world_time:int ##统计地图游戏时长
 @export var difficult := DIFFICULTIES.EASY
-#@export var chunks:Dictionary = {}
 @export var world_seed:int
-@export var tile_set:TileSet = preload("res://Asset/WorldResource/TileSet/Blocks2.tres")
+#@export var tile_set:TileSet = preload("res://Asset/WorldResource/TileSet/Blocks2.tres")
 @export var chunk_size:int = 16
 
 @export var enemy_list:Array ## TODO

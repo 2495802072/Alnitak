@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://b6q6gme1i4fsa"]
 
-[ext_resource type="TileSet" uid="uid://dqc4nusj2l1k1" path="res://Asset/WorldResource/TileSet/Blocks2.tres" id="1_1q31b"]
 [ext_resource type="Script" path="res://World/script/chunk.gd" id="1_obuog"]
+[ext_resource type="TileSet" uid="uid://dqc4nusj2l1k1" path="res://Asset/WorldResource/TileSet/Blocks2.tres" id="1_pfnjr"]
 
 [node name="Chunk" type="TileMap"]
-tile_set = ExtResource("1_1q31b")
+tile_set = ExtResource("1_pfnjr")
 format = 2
 script = ExtResource("1_obuog")
