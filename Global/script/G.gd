@@ -114,16 +114,26 @@ func host_game() -> void: ##主机创建游戏
 	if has_multi_file():##触发该函数时 理论上必然存在Multi文件
 		var file = ConfigFile.new()
 		var err = file.load(multi_file)
+		
+		#文件成功加载
 		if err == OK:
 			var peer := ENetMultiplayerPeer.new()
-			var port:String = file.get_value("host","port")
-			var max_palyer:String = file.get_value("host","max_player")
-			var error := peer.create_server(int(port), int(max_palyer))
-			if error:
-				printerr("host error")
-				return
-			_get_game_root().multiplayer.multiplayer_peer = peer
-			print("<多人-创建游戏>")
+			
+			#存在host节
+			if "host" in file.get_sections():
+				var port:String = file.get_value("host","port")
+				var max_palyer:String = file.get_value("host","max_player")
+				
+				#创建多人主机
+				var error := peer.create_server(int(port), int(max_palyer))
+				if error:
+					printerr("host error")
+					return
+				_get_game_root().multiplayer.multiplayer_peer = peer
+				
+				print("<多人-创建游戏>")
+			else:
+				printerr("【host】加载失败")
 		else:
 			printerr("多人文件加载失败")
 			return
@@ -136,16 +146,24 @@ func join_game() -> void: ##服务端加入游戏
 	if has_multi_file():##触发该函数时 理论上必然存在Multi文件
 		var file = ConfigFile.new()
 		var err = file.load(multi_file)
+		
+		#文件成功加载
 		if err == OK:
 			var peer := ENetMultiplayerPeer.new()
+			
+			#存在joint节
 			if "join" in file.get_sections():
 				var address:String = file.get_value("join","ip")
 				var port:String = file.get_value("join","port")
+				
+				#创建多人客户端
 				var error := peer.create_client(address, int(port))
 				if error:
 					printerr("host error")
 					return
 				_get_game_root().multiplayer.multiplayer_peer = peer
+				
+				
 				print("<多人-加入游戏>")
 			else:
 				printerr("【Join】加载失败")

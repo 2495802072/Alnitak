@@ -34,6 +34,7 @@ layout_mode = 2
 
 [node name="IP" type="HSplitContainer" parent="VBoxContainer/Panel/VBoxContainer"]
 layout_mode = 2
+tooltip_text = "绝大部分情况，保持默认即可"
 collapsed = true
 dragger_visibility = 1
 

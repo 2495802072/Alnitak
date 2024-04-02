@@ -39,9 +39,19 @@ func _change_view_to_create_player(): ##按钮信号触发
 	_close_self()
 
 func _next_view():
-	print(G.PLAY_MODE)
-	role_manager.create_player(player_selected)
-	G._get_view_manager().open_view("WorldSelect")
+	#单人模式
+	if G.PLAY_MODE == G.PLAY_MODES.SINGLEPLAYER:
+		role_manager.create_player(player_selected)
+		G._get_view_manager().open_view("WorldSelect")
+	#多人主机
+	elif G.PLAY_MODE == G.PLAY_MODES.MULTIPLAYER_HOST:
+		G.host_game()
+		role_manager.create_player(player_selected)
+		G._get_view_manager().open_view("WorldSelect")
+	#多人客户端
+	else:
+		G.join_game()
+		role_manager.create_player(player_selected)
 	_close_self()
 
 func _dir_contents(path:String) -> void: ##遍历path文件夹,获取预设贴图

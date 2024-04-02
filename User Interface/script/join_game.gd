@@ -28,6 +28,7 @@ func _on_enter_pressed() -> void:
 
 func write_to_file() -> bool:
 	var file = ConfigFile.new()
+	file.load(G.get_multi_file_path())
 	var ip:String
 	var port:String = port_line.placeholder_text
 	if ip_line.text != "":

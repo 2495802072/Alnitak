@@ -3,11 +3,15 @@ extends BaseGUIView
 @onready var Aflash1:AnimationPlayer = $AnimationPlayer as AnimationPlayer
 @onready var ui_manager:GUIViewManager = G._get_view_manager()
 
-var has_file:bool = false 
+var had_hosted:bool = false 
 
 func _ready():
 	G.PLAY_MODE = G.PLAY_MODES.SINGLEPLAYER ##默认单人模式
-	has_file = G.has_multi_file()
+	if G.has_multi_file():
+		var file = ConfigFile.new()
+		file.load(G.get_multi_file_path())
+		if "host" in file.get_sections():
+			had_hosted = true
 
 func _open():
 	Aflash1.play("RESET")
@@ -31,7 +35,7 @@ func _back_to_start_menu():
 func _on_multi_player_mouse_entered():
 	$HBoxContainer/MultiPlayer.disabled = true
 	Aflash1.play("show_button")
-	if has_file: ##显示鼠标右击更改配置文件
+	if had_hosted: ##显示鼠标右击更改配置文件
 		$HBoxContainer/MultiPlayer.text = "Reset By RightClick"
 
 
@@ -43,7 +47,7 @@ func _on_host_gui_input(event):
 
 func _on_host_pressed():
 	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_HOST
-	if has_file:
+	if had_hosted:
 		_next_view()
 	else:
 		_open_host_scene()

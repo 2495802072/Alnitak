@@ -9,10 +9,10 @@ func _ready():
 		var file = ConfigFile.new()
 		var err:Error = file.load(G.get_multi_file_path())
 		if err == OK: #确认正确载入
-			for section in file.get_sections(): #遍历【节】
-				if section == "host":
-					ip_line.text = file.get_value(section,"ip")
-					port_line.text = file.get_value(section,"port")
+			if "host" in file.get_sections(): #遍历【节】
+				ip_line.text = file.get_value("host","ip")
+				port_line.text = file.get_value("host","port")
+				max_player.text = file.get_value("host","max_player")
 		else:
 			push_error("Failed to save config: %d" % err)
 	pass
@@ -22,12 +22,14 @@ func _on_back_pressed():
 	_close_self()
 
 func _on_enter_pressed():
+	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_HOST
 	write_to_file()
 	G._get_view_manager().open_view("RoleSelect")
 	_close_self()
 
 func write_to_file():
 	var file = ConfigFile.new()
+	file.load(G.get_multi_file_path())
 	var ip:String = ip_line.placeholder_text
 	var port:String = port_line.placeholder_text
 	var player_num:String = max_player.placeholder_text
