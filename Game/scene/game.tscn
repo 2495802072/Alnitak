@@ -105,6 +105,10 @@ format = 2
 unique_name_in_owner = true
 script = ExtResource("17_2l8h4")
 
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://NPC/scene/Player.tscn")
+spawn_path = NodePath("../GamingBox")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GUIRoot" type="Control" parent="CanvasLayer"]

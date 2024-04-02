@@ -39,6 +39,7 @@ func _change_view_to_create_player(): ##按钮信号触发
 	_close_self()
 
 func _next_view():
+	print(G.PLAY_MODE)
 	role_manager.create_player(player_selected)
 	G._get_view_manager().open_view("WorldSelect")
 	_close_self()

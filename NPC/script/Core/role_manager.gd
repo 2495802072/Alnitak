@@ -28,9 +28,13 @@ func create_player(player_data:PlayerData) -> void: ## 创建玩家
 	G._get_palyer_camera().change_mode_to(1)
 
 func add_player(player:Node2D): ## 添加玩家
+	##赋予玩家实例化编号
 	player.instance_id = _get_role_instance_index()
-	player.position = G._get_world_manager().get_player_position(player.data.get("UID")) ##找到玩家在地图内的坐标
 	_add_to_role_instance_list(player)
+	
+	##找到玩家存储在地图数据内的坐标
+	player.position = G._get_world_manager().get_player_position(player.data.get("UID"))
+	
 	player_root.add_child(player)
 	G._get_world_manager()._update_players_position() ##玩家加入后，更新地图存储的玩家坐标
 

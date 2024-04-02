@@ -9,10 +9,11 @@ var multi_file:String
 var player_local_dir_path:String = ProjectSettings.globalize_path("user://Data/player/")
 var world_local_dir_path:String = ProjectSettings.globalize_path("user://Data/world/")
 
-var PLAY_MODE:int = PLAY_MODES.SINGLEPLAYER ##单人游戏或者多人游戏
+var PLAY_MODE := PLAY_MODES.SINGLEPLAYER ##单人游戏或者多人游戏
 enum PLAY_MODES{
 	SINGLEPLAYER,## 单人游戏
-	MULTIPLAYER## 多人游戏
+	MULTIPLAYER_HOST,## 多人游戏(主机)
+	MULTIPLAYER_JOIN,## 多人游戏(客户端)
 }
 
 func _init():
@@ -102,11 +103,59 @@ func _get_palyer_camera() -> Camera2D:
 	else:
 		print("can not find camera")
 		return
+
 func has_multi_file() -> bool:
 	return FileAccess.file_exists(multi_file)
 
 func get_multi_file_path() -> String:
 	return multi_file
 
-func get_play_mode() -> int:
+func host_game() -> void: ##主机创建游戏
+	if has_multi_file():##触发该函数时 理论上必然存在Multi文件
+		var file = ConfigFile.new()
+		var err = file.load(multi_file)
+		if err == OK:
+			var peer := ENetMultiplayerPeer.new()
+			var port:String = file.get_value("host","port")
+			var max_palyer:String = file.get_value("host","max_player")
+			var error := peer.create_server(int(port), int(max_palyer))
+			if error:
+				printerr("host error")
+				return
+			_get_game_root().multiplayer.multiplayer_peer = peer
+			print("<多人-创建游戏>")
+		else:
+			printerr("多人文件加载失败")
+			return
+	else :
+		printerr("多人文件丢失")
+		return
+
+func join_game() -> void: ##服务端加入游戏
+	#缺少判断主机端是否存在
+	if has_multi_file():##触发该函数时 理论上必然存在Multi文件
+		var file = ConfigFile.new()
+		var err = file.load(multi_file)
+		if err == OK:
+			var peer := ENetMultiplayerPeer.new()
+			if "join" in file.get_sections():
+				var address:String = file.get_value("join","ip")
+				var port:String = file.get_value("join","port")
+				var error := peer.create_client(address, int(port))
+				if error:
+					printerr("host error")
+					return
+				_get_game_root().multiplayer.multiplayer_peer = peer
+				print("<多人-加入游戏>")
+			else:
+				printerr("【Join】加载失败")
+				return
+		else:
+			printerr("多人文件加载失败")
+			return
+	else :
+		printerr("多人文件丢失")
+		return
+
+func get_play_mode():
 	return PLAY_MODE

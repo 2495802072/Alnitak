@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="PlayerData" load_steps=3 format=3 uid="uid://cjcyj4l0i2mut"]
+
+[ext_resource type="Resource" uid="uid://dvg10g2r51ccy" path="res://Asset/PlayerResource/configs/GameEngineer.tres" id="1_jrgdo"]
+[ext_resource type="Script" path="res://NPC/script/player_data.gd" id="2_qbffm"]
+
+[resource]
+resource_name = "1111"
+script = ExtResource("2_qbffm")
+clan = 0
+player_name = "1111"
+bag_size = 10
+player_bag = Array[int]([])
+difficult = 0
+UID = "{6c466f0e-4237-11ed-af33-806e6f6e6963}-1711963887.029"
+config = ExtResource("1_jrgdo")
+HP_base = 100
+HP_buff = 1.0
+MP_base = 0
+ATK_base = 1
+ATK_buff = 1.0
+DEF_base = 1
+DEF_buff = 1.0
+buff_list = []
+HP_UP = 5
+MP_UP = 5
+speed = 300.0
+jump_velocity = -400.0

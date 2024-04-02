@@ -47,6 +47,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "127.0.0.1"
 alignment = 1
+editable = false
 expand_to_text_length = true
 
 [node name="Port" type="HSplitContainer" parent="VBoxContainer/Panel/VBoxContainer"]
@@ -63,6 +64,23 @@ text = "Host Port:"
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "7777"
+alignment = 1
+expand_to_text_length = true
+
+[node name="MaxPlayer" type="HSplitContainer" parent="VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+collapsed = true
+dragger_visibility = 1
+
+[node name="Label" type="Label" parent="VBoxContainer/Panel/VBoxContainer/MaxPlayer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "max player:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Panel/VBoxContainer/MaxPlayer"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "4"
 alignment = 1
 expand_to_text_length = true
 

@@ -6,6 +6,7 @@ extends BaseGUIView
 var has_file:bool = false 
 
 func _ready():
+	G.PLAY_MODE = G.PLAY_MODES.SINGLEPLAYER ##默认单人模式
 	has_file = G.has_multi_file()
 
 func _open():
@@ -41,10 +42,12 @@ func _on_host_gui_input(event):
 	pass
 
 func _on_host_pressed():
+	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_HOST
 	if has_file:
 		_next_view()
 	else:
 		_open_host_scene()
 
 func _on_join_pressed():
+	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_JOIN
 	_open_join_scene()
