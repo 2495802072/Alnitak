@@ -7,3 +7,5 @@
 tile_set = ExtResource("1_pfnjr")
 format = 2
 script = ExtResource("1_obuog")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]

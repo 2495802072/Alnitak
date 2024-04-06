@@ -97,17 +97,21 @@ chunk_sence = ExtResource("16_s5yfg")
 
 [node name="PlayerRoot" type="Node2D" parent="GamingBox"]
 
+[node name="PlayerSpawner" type="MultiplayerSpawner" parent="GamingBox"]
+_spawnable_scenes = PackedStringArray("res://NPC/scene/Player.tscn")
+spawn_path = NodePath("../PlayerRoot")
+
 [node name="WorldRoot" type="TileMap" parent="GamingBox"]
 tile_set = SubResource("TileSet_llfm7")
 format = 2
 
+[node name="WorldSpawner" type="MultiplayerSpawner" parent="GamingBox"]
+_spawnable_scenes = PackedStringArray("res://World/scene/chunk.tscn")
+spawn_path = NodePath("../WorldRoot")
+
 [node name="PlayerCamera" type="Camera2D" parent="GamingBox"]
 unique_name_in_owner = true
 script = ExtResource("17_2l8h4")
-
-[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://NPC/scene/Player.tscn")
-spawn_path = NodePath("../GamingBox")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,8 +1,7 @@
 class_name WorldManager extends Node
 
-signal initialized() ##初始化完成发出，及获得世界数据
-signal world_ready() ##世界被加载后发出
 signal player_enter_chunk(chunk_id:Vector2i)
+signal world_selected_over() ##世界选择结束，取消选择也产生信号
 
 @export var world_root:TileMap ## 世界根节点， 编译器属性直接赋值
 @export var chunk_sence:PackedScene ## 区块场景，编译器属性直接赋值
@@ -15,22 +14,22 @@ var chunk_nodes:Dictionary = {} ##区块的节点
 
 var world_data:WorldData ##存储世界数据
 
-func _ready():
-	await initialized
-	for player_position in players_position.values():
-		var p_chunk_pos:Vector2i = _to_chunk(player_position)
-		_generate_chunk(p_chunk_pos)
-	world_ready.emit()
+var world_completed:bool = false 
 
 func _init_data(data:WorldData):##初始化
 	world_data = data
 	players_position = Dictionary(world_data.player_position)
-	initialized.emit()
+	for player_position in players_position.values():
+		var p_chunk_pos:Vector2i = _to_chunk(player_position)
+		_generate_chunk(p_chunk_pos)
+	world_completed = true
+	world_selected_over.emit()
 	pass
 
-func _process(delta):
-	if G._get_role_manager().count_player_velocity() != Vector2.ZERO:
-		_update_chunks()
+func _process(_delta):
+	if multiplayer.is_server():
+		if G._get_role_manager().count_player_velocity() != Vector2.ZERO:
+			_update_chunks()
 
 func _update_chunks() -> void:
 	for player in players_position.keys():
@@ -60,7 +59,6 @@ func _generate_chunk(center_chunk:Vector2i) -> void: ## 以中心区块计算生
 			
 	
 	#计算不需要的区块
-	var remove:Array[Vector2i] = []
 	for chunk in loaded_chunks:
 		if not array.has(chunk):
 			_remove_chunk(chunk)
@@ -71,6 +69,7 @@ func _generate_chunk(center_chunk:Vector2i) -> void: ## 以中心区块计算生
 func _add_chunk_node(chunk_id:Vector2i) -> void: ##将区块节点添加至worldRoot
 	var chunk:ChunkNode = chunk_sence.instantiate()
 	chunk.chunk_id = chunk_id
+	chunk.name = str(chunk_id)
 	chunk.noise = world_data.world_seed
 	chunk.size = chunk_size
 	chunk.position = world_root.map_to_local(chunk_id*chunk_size)
@@ -115,3 +114,9 @@ func get_player_position(player_uid:String) -> Vector2: ##其他节点获取存�
 	var local:Vector2 = world_root.map_to_local(pos)
 	return local
 
+func selected_world() -> bool:
+	world_completed = false
+	G._get_view_manager().open_view("WorldSelect")
+	await world_selected_over
+	return world_completed
+	

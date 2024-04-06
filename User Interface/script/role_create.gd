@@ -137,7 +137,15 @@ func _set_player_config(cfg:ChartletConfig) -> void: ##设置玩家的贴图资�
 	cfg_be_changed.emit()
 
 func _set_difficult(_index:int = 0) -> void: ##设置玩家难度
-	data.difficult = difficult_button.get_selected_id()
+	match (difficult_button.get_selected_id()):
+		0:
+			data.difficult = RoleBase.DIFFICULT_PLAYER.FREE
+		1:
+			data.difficult = RoleBase.DIFFICULT_PLAYER.EASY
+		2:
+			data.difficult = RoleBase.DIFFICULT_PLAYER.NORMAL
+		3:
+			data.difficult = RoleBase.DIFFICULT_PLAYER.DIFFICULT
 
 ## UI操作
 func _on_create_pressed() -> void:

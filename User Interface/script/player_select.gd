@@ -39,19 +39,30 @@ func _change_view_to_create_player(): ##按钮信号触发
 	_close_self()
 
 func _next_view():
+	
 	#单人模式
 	if G.PLAY_MODE == G.PLAY_MODES.SINGLEPLAYER:
-		role_manager.create_player(player_selected)
-		G._get_view_manager().open_view("WorldSelect")
+		role_manager.set_lcoal_player_data(player_selected)
+		#create_player(玩家基底模型路径，玩家名称，玩家uid)
+		var flag:bool = await G._get_world_manager().selected_world()
+		if flag:
+			role_manager.add_player(player_selected.config.resource_path,player_selected.player_name,player_selected.UID)
+		else:
+			
+			return
 	#多人主机
 	elif G.PLAY_MODE == G.PLAY_MODES.MULTIPLAYER_HOST:
-		G.host_game()
-		role_manager.create_player(player_selected)
-		G._get_view_manager().open_view("WorldSelect")
+		role_manager.set_lcoal_player_data(player_selected)
+		var flag:bool = await G._get_world_manager().selected_world()
+		if flag:
+			role_manager.rpc_id(1,"add_player",player_selected.config.resource_path,player_selected.player_name,player_selected.UID)
+		else:
+			
+			return
 	#多人客户端
 	else:
-		G.join_game()
-		role_manager.create_player(player_selected)
+		role_manager.set_lcoal_player_data(player_selected)
+		role_manager.rpc_id(1,"add_player",player_selected.config.resource_path,player_selected.player_name,player_selected.UID)
 	_close_self()
 
 func _dir_contents(path:String) -> void: ##遍历path文件夹,获取预设贴图

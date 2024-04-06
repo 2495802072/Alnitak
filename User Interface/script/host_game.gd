@@ -24,6 +24,7 @@ func _on_back_pressed():
 func _on_enter_pressed():
 	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_HOST
 	write_to_file()
+	G.host_game()
 	G._get_view_manager().open_view("RoleSelect")
 	_close_self()
 

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="WorldData" load_steps=2 format=3 uid="uid://b86048e4ux2xr"]
+
+[ext_resource type="Script" path="res://World/script/world_data.gd" id="1_kvjue"]
+
+[resource]
+resource_name = "13"
+script = ExtResource("1_kvjue")
+world_name = "13"
+world_time = 0
+difficult = 0
+world_seed = 13
+chunk_size = 16
+enemy_list = []
+player_borth_position = Vector2i(7, 7)
+player_position = {
+"{6c466f0e-4237-11ed-af33-806e6f6e6963}-1711427170.511": Vector2i(0, 0),
+"{6c466f0e-4237-11ed-af33-806e6f6e6963}-1711963887.029": Vector2i(20, 27)
+}

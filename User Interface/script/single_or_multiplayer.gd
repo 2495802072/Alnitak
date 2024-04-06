@@ -48,6 +48,7 @@ func _on_host_gui_input(event):
 func _on_host_pressed():
 	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_HOST
 	if had_hosted:
+		G.host_game()
 		_next_view()
 	else:
 		_open_host_scene()

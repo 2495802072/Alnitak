@@ -22,6 +22,7 @@ func _on_back_pressed() -> void:
 func _on_enter_pressed() -> void:
 	G.PLAY_MODE = G.PLAY_MODES.MULTIPLAYER_JOIN
 	if write_to_file():
+		G.join_game()
 		G._get_view_manager().open_view("RoleSelect")
 		_close_self()
 	pass
