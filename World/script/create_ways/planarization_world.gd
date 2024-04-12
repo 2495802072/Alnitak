@@ -1,7 +1,7 @@
 ## 平坦世界
 class_name Planarization extends WorldCreateWays
 
-var group := WorldCreateWays.GROUPS.CREATED
+var rule:= WorldCreateWays.RULES.CREATED
 
 func _create():
 	pass

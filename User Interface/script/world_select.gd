@@ -14,10 +14,6 @@ func _open():
 	_hide_others()
 	pass
 
-func _close():
-	_show_others()
-	pass
-
 func _ready():
 	information.hide() ##详细信息默认保持隐藏，选中世界后展开
 	_dir_contents(worldFile_path_local)
@@ -28,6 +24,7 @@ func _change_view_to_create_world() -> void: ##按钮信号触发
 
 func _on_back_pressed() -> void: ##返回按钮
 	G._get_world_manager().world_selected_over.emit()
+	_show_others()
 	_close_self()
 
 func _dir_contents(path:String) -> void: ##遍历path文件夹,获取资源

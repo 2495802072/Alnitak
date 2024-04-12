@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @export var manager:RoleManager
 @export var data:PlayerData
+@export var uid:String
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # 重力
 
 @rpc("any_peer","reliable")
@@ -19,19 +20,17 @@ func _enter_tree():
 func _ready():
 	manager =  G._get_role_manager() as RoleManager
 	if multiplayer.get_unique_id() == name.to_int():
+		#本地设置相机跟随
+		manager.set_player_camera(name)
 		set_local_data()
 	init_player()
 
 func _physics_process(delta):
-	if multiplayer.is_server():
-		if velocity != Vector2.ZERO:
-			print(name)
-	
 	if multiplayer.get_unique_id() == name.to_int():
-		#if not is_on_floor():
-			#velocity.y += gravity * delta
-		#if Input.is_action_just_pressed("jump") and is_on_floor():
-			#velocity.y = data.jump_velocity
+		if not is_on_floor():
+			velocity.y += gravity * delta
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = data.jump_velocity
 		
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction:
@@ -51,6 +50,7 @@ func _physics_process(delta):
 @rpc("authority","reliable")
 func set_local_data() -> void:
 	data = G._get_role_manager().lcoal_player_data as PlayerData
+	uid = data.UID
 	pass
 
 func attack() -> void: ##施加伤害
@@ -63,7 +63,7 @@ func remove_self() -> void:
 func init_player() -> void:
 	if data:
 		config_path = data.config.resource_path
-	#注意：客户端投影使用角色创建之初传给主机端的地址
+	#注意：客户端投影config使用的 是角色创建之初传给主机端的地址
 	var config = ResourceLoader.load(config_path,"ChartletConfig")
 	animated_sprite.set_sprite_frames(config.sprit_frames)
 	collision_shape.set_shape(config.collision_shape)

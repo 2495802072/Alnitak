@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://drluxa2i8lrow" path="res://User Interface/scene/world_create.tscn" id="12_dk0v6"]
 [ext_resource type="PackedScene" uid="uid://b6q6gme1i4fsa" path="res://World/scene/chunk.tscn" id="16_s5yfg"]
 [ext_resource type="Script" path="res://Game/script/player_camera.gd" id="17_2l8h4"]
+[ext_resource type="TileSet" uid="uid://c5vxfybvknm7s" path="res://Asset/WorldResource/TileSet/Blocks64.tres" id="17_ymbgr"]
 
 [sub_resource type="Resource" id="Resource_7mtms"]
 script = ExtResource("2_4ouet")
@@ -68,8 +69,6 @@ script = ExtResource("2_4ouet")
 id = &"WorldCreate"
 prefab = ExtResource("12_dk0v6")
 
-[sub_resource type="TileSet" id="TileSet_llfm7"]
-
 [node name="Game" type="Node"]
 
 [node name="GUIViewManager" type="Node" parent="." node_paths=PackedStringArray("guiRoot")]
@@ -102,7 +101,7 @@ _spawnable_scenes = PackedStringArray("res://NPC/scene/Player.tscn")
 spawn_path = NodePath("../PlayerRoot")
 
 [node name="WorldRoot" type="TileMap" parent="GamingBox"]
-tile_set = SubResource("TileSet_llfm7")
+tile_set = ExtResource("17_ymbgr")
 format = 2
 
 [node name="WorldSpawner" type="MultiplayerSpawner" parent="GamingBox"]

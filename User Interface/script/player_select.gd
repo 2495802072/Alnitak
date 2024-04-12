@@ -39,7 +39,6 @@ func _change_view_to_create_player(): ##按钮信号触发
 	_close_self()
 
 func _next_view():
-	
 	#单人模式
 	if G.PLAY_MODE == G.PLAY_MODES.SINGLEPLAYER:
 		role_manager.set_lcoal_player_data(player_selected)
@@ -48,7 +47,6 @@ func _next_view():
 		if flag:
 			role_manager.add_player(player_selected.config.resource_path,player_selected.player_name,player_selected.UID)
 		else:
-			
 			return
 	#多人主机
 	elif G.PLAY_MODE == G.PLAY_MODES.MULTIPLAYER_HOST:
@@ -57,7 +55,6 @@ func _next_view():
 		if flag:
 			role_manager.rpc_id(1,"add_player",player_selected.config.resource_path,player_selected.player_name,player_selected.UID)
 		else:
-			
 			return
 	#多人客户端
 	else:

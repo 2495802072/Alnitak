@@ -1,11 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6q6gme1i4fsa"]
+[gd_scene load_steps=4 format=3 uid="uid://b6q6gme1i4fsa"]
 
 [ext_resource type="Script" path="res://World/script/chunk.gd" id="1_obuog"]
-[ext_resource type="TileSet" uid="uid://dqc4nusj2l1k1" path="res://Asset/WorldResource/TileSet/Blocks2.tres" id="1_pfnjr"]
+[ext_resource type="TileSet" uid="uid://c5vxfybvknm7s" path="res://Asset/WorldResource/TileSet/Blocks64.tres" id="1_pq673"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_r3sl4"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:l0_tile_data")
+properties/1/spawn = true
+properties/1/replication_mode = 1
 
 [node name="Chunk" type="TileMap"]
-tile_set = ExtResource("1_pfnjr")
+tile_set = ExtResource("1_pq673")
 format = 2
+layer_0/name = "sorts"
 script = ExtResource("1_obuog")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_r3sl4")

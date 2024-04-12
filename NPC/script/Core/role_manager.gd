@@ -62,12 +62,6 @@ func add_player(config_path:String,player_name:String,player_uid:String): ## 添
 	
 	G.game_entered.emit() ##到这里，已经完全进入游戏（脱离菜单页面）
 	
-	#设置相机跟随
-	if player.name.to_int() == 1:
-		set_player_camera(player.name)
-	else:
-		rpc_id(player.name.to_int(),"set_player_camera",player.name)
-	
 	G._get_world_manager()._update_players_position() ##玩家加入后，更新地图存储的玩家坐标
 
 func _get_role_instance_index() -> int: ##获取role固定编号 TODO 完作请考虑使用内置方法get_instance_id()
@@ -99,14 +93,15 @@ func remove_player(instance_index:int): ## 玩家退出时，坐标数据存到�
 	G._get_palyer_camera().player_exit()
 	player_to_leave.queue_free()
 
-@rpc("any_peer","call_local","reliable")
+
 func get_player_positions() -> Dictionary: ##返回所有玩家的坐标数据
 	var dic:Dictionary = {}
 	for player in player_root.get_children():
 		var pos:Vector2 = player.position
-		var uid:String = lcoal_player_data.UID
+		var uid:String = player.get("uid")
 		dic[uid] = pos
 	return dic
+
 @rpc("any_peer","call_local","reliable")
 func count_player_velocity() -> Vector2: ##统计玩家速度总和，静默时减少内存消耗
 	var v_sum:Vector2 = Vector2.ZERO
@@ -120,7 +115,6 @@ func set_player_camera(node_name:String) -> void:
 	print("设置相机跟随对象")
 	var player:Node2D = player_root.get_node_or_null(node_name)
 	G._get_palyer_camera().player = player ##设置相机跟随对象
-	G._get_palyer_camera().focal_player()
 	G._get_palyer_camera().change_mode_to(1)
 
 #TODO

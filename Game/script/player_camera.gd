@@ -1,9 +1,10 @@
+## 每个客户端仅设置一个相机，分配正确的聚焦对象就不会出错
 extends Camera2D
 
-@export var player:Node2D
-@export var target1:Node2D
-@export var target2:Node2D
-@export var focal_point:Vector2 ##相机焦点中心,相机跟随点
+@export var player:Node2D ## 聚焦的玩家节点
+@export var target1:Node2D ## 目标1
+@export var target2:Node2D ## 目标2
+@export var focal_point:Vector2 =Vector2.ZERO ##相机焦点中心,相机跟随点
 @export var smoothing_speed:float = 5.0 ##相机平滑速度
 @export var mode := MODES.NONE ##默认相机为无目标模式
 
@@ -15,8 +16,6 @@ enum MODES{
 }
 
 func _process(delta):
-	if not focal_point:
-		return
 	if mode == MODES.NONE:
 		focal_point = Vector2(0,0)
 	elif mode == MODES.PLAYER_TARGET:
@@ -39,12 +38,13 @@ func change_mode_to(index:int) -> void:
 			mode = MODES.NONE
 		1:
 			mode = MODES.PLAYER_TARGET
+			_focal_player()
 		2:
 			mode = MODES.ONE_TARGET
 		3:
 			mode = MODES.TWO_TARGET
 
-func focal_player() -> void:
+func _focal_player() -> void:
 	if player:
 		focal_point = player.position
 	pass
