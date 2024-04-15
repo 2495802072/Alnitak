@@ -3,12 +3,11 @@ extends BaseGUIView
 @onready var world_name:LineEdit = $VBoxContainer/HSplitContainer/HSplitContainer/WorldName as LineEdit
 @onready var world_seed:LineEdit = $VBoxContainer/HSplitContainer/HSplitContainer2/WorldSeed as LineEdit
 @onready var difficult:Button = $VBoxContainer/HboxContainer/difficult as Button
-
+@onready var create_mode:Button = $VBoxContainer/CreateMode as Button 
 
 var data:WorldData
 
 func _ready():
-	
 	data = WorldData.new()
 
 func _on_world_name_text_changed(new_name:String) -> void: ##设置世界名称
@@ -42,3 +41,14 @@ func _on_difficult_pressed() -> void: ##修改世界难度
 		"difficult:difficult":
 			difficult.text = "difficult:easy"
 			data.difficult = WorldData.DIFFICULTIES.EASY
+
+
+func _on_create_mode_pressed() -> void:
+	match (create_mode.text):
+		"create mode:planarization":
+			create_mode.text = "create mode:normal"
+			data.create_way = NormalWorld.new()
+		"create mode:normal":
+			create_mode.text = "create mode:planarization"
+			data.create_way = PlanarizationWorld.new()
+	pass

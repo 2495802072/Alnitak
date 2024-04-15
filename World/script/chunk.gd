@@ -11,7 +11,7 @@ var noise:int
 var size:Vector2i
 var chunk_root:TileMap
 var manager:WorldManager
-
+var world_data:WorldData
 var task_id:int ##线程任务id
 var task_completed:bool = false ##线程任务完成标识，不完成拒绝释放
 
@@ -20,7 +20,6 @@ func _ready():
 		task_id = WorkerThreadPool.add_task(thread_generate,true) ##使用线程加载
 	else:
 		await multiplayer_synchronizer.synchronized
-		
 		set("layer_0/tile_data",l0_tile_data)
 		pass
 
@@ -31,32 +30,32 @@ func _process(_delta): ##实时获取该区块是否完成
 
 func thread_generate()->void: ##线程生成地图
 	var array:Array[Vector2i] = []
-	var noise1:FastNoiseLite = FastNoiseLite.new()
-	var noise2:FastNoiseLite = FastNoiseLite.new()
-	noise1.set_seed(noise)
-	noise2.set_seed(noise-1)
+	var earse_array:Array[Vector2i] = []
 	
-	
-	for x in range(size.x): ##区块范围（0，0）到（size,size）
-		for y in range(size.y):
+	for x in range(-1,size.x+1): ##区块范围（0，0）到（size,size）,多算一圈，防止区块衔接不可合理
+		for y in range(-1,size.y+1):
+			##当前图格 的坐标，统一（0，0）到（size,size）,因为区块的全局坐标在父级设置了，所以每个区块仅须管好自己
+			var local_vector:Vector2i = Vector2i(x,y)
 			
-			var local_vector:Vector2i = Vector2i(x,y)##当前tilemap 的坐标，统一（0，0）到（size,size）
-			var noise_vector:Vector2i = chunk_id*size+local_vector ##该点的噪声坐标，由map管理提供
-			## 通过比较噪声的平方大小决定图格
-			if noise1.get_noise_2dv(noise_vector)*noise1.get_noise_2dv(noise_vector) < noise2.get_noise_2dv(noise_vector)*noise2.get_noise_2dv(noise_vector):
+			## 调用data的create_way判断是否添加图格
+			if world_data.create_way._create_block(chunk_id,local_vector,noise,size):
 				array.append(local_vector)
-				
-				
+			
+			##消除外围一圈的衔接用图格
+			if x in [-1,size.x] or y in [-1,size.y]:
+				earse_array.append(local_vector)
+	
+	set_cells_terrain_connect(0,array,0,0)
+	for earse_vector in earse_array:
+		erase_cell(0,earse_vector)
 	
 	#主线程设置图格
-	
-	call_deferred("_generate_finished",array)
+	call_deferred("_generate_finished",get("layer_0/tile_data"))
 	pass
 
 ##由主线程设置图格
-func _generate_finished(tile_data:Array) -> void:
-	set_cells_terrain_connect(0,tile_data,0,0)
-	l0_tile_data = get("layer_0/tile_data")
+func _generate_finished(tile_data:PackedInt32Array) -> void:
+	l0_tile_data = tile_data
 	pass
 
 func queue_self() -> bool: ##当前区块释放自己

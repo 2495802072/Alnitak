@@ -51,5 +51,6 @@ static func to_tile_data(coords:Vector2i,
 	tile_data.append(int_32)
 	return tile_data
 
-func _create():
+## 子类请ovewrite
+func _create_block(_chunk_id:Vector2i,_block_vector:Vector2i,_noise_seed:int,_chunk_size:Vector2i):
 	pass

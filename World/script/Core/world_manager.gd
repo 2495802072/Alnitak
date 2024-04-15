@@ -10,7 +10,7 @@ signal world_selected_over() ##世界选择结束，取消选择也产生信号
 
 var players_position:Dictionary##存储玩家们的坐标 [uid]:Vector2
 var player_chunks:Array[Vector2i] ##存储玩家们的区块
-var loading_radius:Vector2i = Vector2i(2,1) ##区块加载半径
+var loading_radius:Vector2i = Vector2i(3,2) ##区块加载半径
 var loaded_chunks:Array[Vector2i] = [] ##已加载区块
 var chunk_nodes:Dictionary = {} ##区块的节点
 
@@ -88,6 +88,7 @@ func _add_chunk_node(chunk_id:Vector2i) -> void: ##将区块节点添加至world
 	chunk.chunk_root = world_root ##区块的根节点
 	chunk.manager = self 
 	chunk.tile_set = world_root.tile_set
+	chunk.world_data = world_data
 	world_root.add_child(chunk)
 	chunk_nodes[chunk_id] = chunk
 	pass

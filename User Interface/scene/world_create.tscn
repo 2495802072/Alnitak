@@ -80,7 +80,7 @@ text = "block theme"
 
 [node name="CreateMode" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-text = "create mode"
+text = "create mode:normal"
 
 [node name="HSplitContainer2" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -101,5 +101,6 @@ text = "Create"
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/HSplitContainer/WorldName" to="." method="_on_world_name_text_changed"]
 [connection signal="text_changed" from="VBoxContainer/HSplitContainer/HSplitContainer2/WorldSeed" to="." method="_on_world_seed_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HboxContainer/difficult" to="." method="_on_difficult_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreateMode" to="." method="_on_create_mode_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer2/Create" to="." method="_on_create_pressed"]

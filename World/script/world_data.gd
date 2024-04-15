@@ -4,8 +4,8 @@ class_name WorldData extends Resource
 @export var world_time:int ##统计地图游戏时长
 @export var difficult := DIFFICULTIES.EASY
 @export var world_seed:int
-#@export var tile_set:TileSet = preload("res://Asset/WorldResource/TileSet/Blocks2.tres")
 @export var chunk_size:int = 16
+@export var create_way:WorldCreateWays = NormalWorld.new()
 
 @export var enemy_list:Array ## TODO
 @export var player_borth_position:Vector2i = Vector2i(7,7) ##玩家出生点

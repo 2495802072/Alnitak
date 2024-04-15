@@ -56,6 +56,7 @@ folder_colors={
 "res://World/asset/": "blue",
 "res://World/scene/": "green",
 "res://World/script/Core/": "red",
+"res://World/script/create_ways/Core/": "red",
 "res://addons/": "gray"
 }
 
