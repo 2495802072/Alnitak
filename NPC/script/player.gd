@@ -10,10 +10,6 @@ extends CharacterBody2D
 @export var uid:String
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") # 重力
 
-@rpc("any_peer","reliable")
-func _init():
-	pass
-
 func _enter_tree():
 	set_multiplayer_authority(name.to_int())
 
@@ -26,7 +22,9 @@ func _ready():
 	init_player()
 
 func _physics_process(delta):
+	##限制操作权限
 	if multiplayer.get_unique_id() == name.to_int():
+		
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -39,7 +37,12 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, data.speed)
 		move_and_slide()
 		
-		if Input.is_action_just_pressed("interact"):##退出逻辑
+		#打开UI
+		if Input.is_action_just_pressed("ui_cancel"):
+			pass
+		
+		##退出逻辑
+		if Input.is_action_just_pressed("interact"):
 			manager.save_player_file() ##客户端保存本地数据
 			if not multiplayer.is_server():
 				rpc_id(1,"remove_self")

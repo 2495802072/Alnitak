@@ -68,7 +68,6 @@ func _generate_chunk(center_chunk_array:Array[Vector2i]) -> void: ## 以中心�
 					_add_chunk_node(chunk_id)
 					#printerr(chunk_id)
 					loaded_chunks.append(chunk_id)
-			
 	
 	#计算不需要的区块
 	for chunk in loaded_chunks:
@@ -121,11 +120,11 @@ func _get_player_position(player_uid:String) -> Vector2i: ##本节点获取玩�
 
 func get_player_position(player_uid:String) -> Vector2: ##其他节点获取存于地图的玩家坐标
 	print("获取玩家坐标")
-	var pos:Vector2i = world_data.player_borth_position
+	var pos:Vector2i = world_data.player_borth_position #初始化为出生点
 	if world_data.player_position.has(player_uid):
 		pos = world_data.player_position[player_uid]
 	else:
-		print("获取玩家坐标失败,使用默认坐标")
+		print("获取玩家坐标失败,使用默认坐标,请检查玩家名称或者地图数据")
 	player_chunks.append(pos)
 	_generate_chunk(player_chunks)
 	var local:Vector2 = world_root.map_to_local(pos)

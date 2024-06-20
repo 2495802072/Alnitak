@@ -43,7 +43,7 @@ func _on_difficult_pressed() -> void: ##修改世界难度
 			data.difficult = WorldData.DIFFICULTIES.EASY
 
 
-func _on_create_mode_pressed() -> void:
+func _on_create_mode_pressed() -> void: ##修改世界生成模式
 	match (create_mode.text):
 		"create mode:planarization":
 			create_mode.text = "create mode:normal"

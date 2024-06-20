@@ -14,7 +14,9 @@ properties/1/replication_mode = 1
 [node name="Chunk" type="TileMap"]
 tile_set = ExtResource("1_pq673")
 format = 2
-layer_0/name = "sorts"
+layer_0/name = "Sorts"
+layer_1/name = "Stones"
+layer_1/tile_data = PackedInt32Array()
 script = ExtResource("1_obuog")
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
