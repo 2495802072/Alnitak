@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://d0p7qhmj6wrac"]
+[gd_scene load_steps=5 format=3 uid="uid://d0p7qhmj6wrac"]
 
 [ext_resource type="Script" path="res://Global/script/G.gd" id="1_bhfjr"]
+[ext_resource type="Script" path="res://Global/script/BGMAudioStreamPlayer.gd" id="2_0urvo"]
+[ext_resource type="AudioStream" uid="uid://dsodaf4pdwyq8" path="res://User Interface/asset/voice/buttom_click.mp3" id="3_2ekdr"]
+[ext_resource type="Script" path="res://Global/script/SFXAudioStreamPlayer.gd" id="4_gkmsw"]
 
 [node name="Global" type="Node"]
 script = ExtResource("1_bhfjr")
+
+[node name="BGMAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"BGM"
+script = ExtResource("2_0urvo")
+
+[node name="SFXAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"SFX"
+script = ExtResource("4_gkmsw")
+SFXArray = Array[AudioStream]([ExtResource("3_2ekdr")])

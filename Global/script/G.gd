@@ -176,3 +176,10 @@ func _get_world_manager() -> WorldManager:
 	else:
 		print("can not find manager")
 		return
+
+func _get_BGM_Player() -> AudioStreamPlayer:
+	return $BGMAudioStreamPlayer as AudioStreamPlayer
+
+func _get_SFX_Player() -> AudioStreamPlayer:
+	return $SFXAudioStreamPlayer as AudioStreamPlayer
+

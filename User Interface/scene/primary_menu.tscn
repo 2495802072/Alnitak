@@ -49,6 +49,10 @@ layout_mode = 2
 theme = ExtResource("1_3pt7l")
 text = "Exit"
 
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Play" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Handbook" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Option" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="mouse_entered" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_button_mouse_entered"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

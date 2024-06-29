@@ -1,7 +1,20 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c5vxfybvknm7s"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://c5vxfybvknm7s"]
 
 [ext_resource type="Texture2D" uid="uid://djssiuri23m8x" path="res://World/asset/Blocks-Stone.png" id="1_sfxqe"]
 [ext_resource type="Texture2D" uid="uid://bp0id0fr8dstd" path="res://World/asset/Blocks-64.png" id="1_xh8q6"]
+[ext_resource type="Texture2D" uid="uid://doj5kuvge5tn2" path="res://World/asset/DOPANT-Stone.png" id="3_k1x5p"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_l7w8a"]
+tile_data = PackedInt32Array(0, 2, 1, 1, 65538, 1, 2, 131074, 1)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_2ed3a"]
+tile_data = PackedInt32Array(0, 2, 3, 1, 65538, 3, 2, 131074, 3, 3, 196610, 3)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_jqnj0"]
+tile_data = PackedInt32Array(0, 2, 2, 1, 65538, 2)
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_gucfj"]
+tile_data = PackedInt32Array(0, 131074, 2, 1, 196610, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ouvg2"]
 resource_name = "Stone"
@@ -270,6 +283,58 @@ texture_region_size = Vector2i(64, 64)
 1:1/0/terrains_peering_bit/left_side = 0
 1:1/0/terrains_peering_bit/top_side = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qnn6k"]
+texture = ExtResource("3_k1x5p")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+3:1/0 = 0
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0 = 0
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0 = 0
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
@@ -279,5 +344,12 @@ terrain_set_0/terrain_0/name = "srot"
 terrain_set_0/terrain_0/color = Color(0.501961, 0.345098, 0.25098, 1)
 terrain_set_0/terrain_1/name = "Stone"
 terrain_set_0/terrain_1/color = Color(0.196938, 0.343433, 1, 1)
+terrain_set_0/terrain_2/name = "DOPANT_Stone"
+terrain_set_0/terrain_2/color = Color(0.572221, 0.249876, 0.266239, 1)
 sources/1 = SubResource("TileSetAtlasSource_hho4u")
 sources/0 = SubResource("TileSetAtlasSource_ouvg2")
+sources/2 = SubResource("TileSetAtlasSource_qnn6k")
+pattern_0 = SubResource("TileMapPattern_l7w8a")
+pattern_1 = SubResource("TileMapPattern_2ed3a")
+pattern_2 = SubResource("TileMapPattern_jqnj0")
+pattern_3 = SubResource("TileMapPattern_gucfj")
